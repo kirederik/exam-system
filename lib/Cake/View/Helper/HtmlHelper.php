@@ -44,63 +44,123 @@ class HtmlHelper extends AppHelper {
  * @var array
  */
 	protected $_tags = array(
-		'meta' => '<meta%s/>',
-		'metalink' => '<link href="%s"%s/>',
-		'link' => '<a href="%s"%s>%s</a>',
-		'mailto' => '<a href="mailto:%s" %s>%s</a>',
-		'form' => '<form action="%s"%s>',
-		'formend' => '</form>',
-		'input' => '<input name="%s"%s/>',
-		'textarea' => '<textarea name="%s"%s>%s</textarea>',
-		'hidden' => '<input type="hidden" name="%s"%s/>',
-		'checkbox' => '<input type="checkbox" name="%s" %s/>',
-		'checkboxmultiple' => '<input type="checkbox" name="%s[]"%s />',
-		'radio' => '<input type="radio" name="%s" id="%s"%s />%s',
-		'selectstart' => '<select name="%s"%s>',
-		'selectmultiplestart' => '<select name="%s[]"%s>',
-		'selectempty' => '<option value=""%s>&nbsp;</option>',
-		'selectoption' => '<option value="%s"%s>%s</option>',
-		'selectend' => '</select>',
-		'optiongroup' => '<optgroup label="%s"%s>',
-		'optiongroupend' => '</optgroup>',
-		'checkboxmultiplestart' => '',
-		'checkboxmultipleend' => '',
-		'password' => '<input type="password" name="%s" %s/>',
-		'file' => '<input type="file" name="%s" %s/>',
-		'file_no_model' => '<input type="file" name="%s" %s/>',
-		'submit' => '<input %s/>',
-		'submitimage' => '<input type="image" src="%s" %s/>',
-		'button' => '<button%s>%s</button>',
-		'image' => '<img src="%s" %s/>',
-		'tableheader' => '<th%s>%s</th>',
-		'tableheaderrow' => '<tr%s>%s</tr>',
-		'tablecell' => '<td%s>%s</td>',
-		'tablerow' => '<tr%s>%s</tr>',
-		'block' => '<div%s>%s</div>',
-		'blockstart' => '<div%s>',
-		'blockend' => '</div>',
-		'hiddenblock' => '<div style="display:none;">%s</div>',
-		'tag' => '<%s%s>%s</%s>',
-		'tagstart' => '<%s%s>',
-		'tagend' => '</%s>',
-		'tagselfclosing' => '<%s%s/>',
-		'para' => '<p%s>%s</p>',
-		'parastart' => '<p%s>',
-		'label' => '<label for="%s"%s>%s</label>',
-		'fieldset' => '<fieldset%s>%s</fieldset>',
-		'fieldsetstart' => '<fieldset><legend>%s</legend>',
-		'fieldsetend' => '</fieldset>',
-		'legend' => '<legend>%s</legend>',
-		'css' => '<link rel="%s" type="text/css" href="%s" %s/>',
-		'style' => '<style type="text/css"%s>%s</style>',
-		'charset' => '<meta http-equiv="Content-Type" content="text/html; charset=%s" />',
-		'ul' => '<ul%s>%s</ul>',
-		'ol' => '<ol%s>%s</ol>',
-		'li' => '<li%s>%s</li>',
-		'error' => '<div%s>%s</div>',
-		'javascriptblock' => '<script%s>%s</script>',
-		'javascriptstart' => '<script>',
-		'javascriptlink' => '<script type="text/javascript" src="%s"%s></script>',
+		'meta' => '<meta%s/>
+	',
+		'metalink' => '<link href="%s"%s/>
+	',
+		'link' => '<a href="%s"%s>%s</a>
+	',
+	'linkWithIcon' => '<a href="%s"%s><span class="%s"></span> %s</a>
+	',
+
+		'mailto' => '<a href="mailto:%s" %s>%s</a>
+	',
+		'form' => '<form action="%s"%s>
+	',
+		'formend' => '</form>
+	',
+		'input' => '<input name="%s"%s/>
+	',
+		'textarea' => '<textarea name="%s"%s>%s</textarea>
+	',
+		'hidden' => '<input type="hidden" name="%s"%s/>
+	',
+		'checkbox' => '<input type="checkbox" name="%s" %s/>
+	',
+		'checkboxmultiple' => '<input type="checkbox" name="%s[]"%s />
+	',
+		'radio' => '<input type="radio" name="%s" id="%s"%s />%s
+	',
+		'selectstart' => '<select name="%s"%s>
+	',
+		'selectmultiplestart' => '<select name="%s[]"%s>
+	',
+		'selectempty' => '<option value=""%s>&nbsp;</option>
+	',
+		'selectoption' => '<option value="%s"%s>%s</option>
+	',
+		'selectend' => '</select>
+	',
+		'optiongroup' => '<optgroup label="%s"%s>
+	',
+		'optiongroupend' => '</optgroup>
+	',
+		'checkboxmultiplestart' => '
+	',
+		'checkboxmultipleend' => '
+	',
+		'password' => '<input type="password" name="%s" %s/>
+	',
+		'file' => '<input type="file" name="%s" %s/>
+	',
+		'file_no_model' => '<input type="file" name="%s" %s/>
+	',
+		'submit' => '<input %s/>
+	',
+		'submitimage' => '<input type="image" src="%s" %s/>
+	',
+		'button' => '<button%s>%s</button>
+	',
+		'image' => '<img src="%s" %s/>
+	',
+		'tableheader' => '<th%s>%s</th>
+	',
+		'tableheaderrow' => '<tr%s>%s</tr>
+	',
+		'tablecell' => '<td%s>%s</td>
+	',
+		'tablerow' => '<tr%s>%s</tr>
+	',
+		'block' => '<div%s>%s</div>
+	',
+		'blockstart' => '<div%s>
+	',
+		'blockend' => '</div>
+	',
+		'hiddenblock' => '<div style="display:none;">%s</div>
+	',
+		'tag' => '<%s%s>%s</%s>
+	',
+		'tagstart' => '<%s%s>
+	',
+		'tagend' => '</%s>
+	',
+		'tagselfclosing' => '<%s%s/>
+	',
+		'para' => '<p%s>%s</p>
+	',
+		'parastart' => '<p%s>
+	',
+		'label' => '<label for="%s"%s>%s</label>
+	',
+		'fieldset' => '<fieldset%s>%s</fieldset>
+	',
+		'fieldsetstart' => '<fieldset><legend>%s</legend>
+	',
+		'fieldsetend' => '</fieldset>
+	',
+		'legend' => '<legend>%s</legend>
+	',
+		'css' => '<link rel="%s" type="text/css" href="%s" %s/>
+	',
+		'style' => '<style type="text/css"%s>%s</style>
+	',
+		'charset' => '<meta http-equiv="Content-Type" content="text/html; charset=%s" />
+	',
+		'ul' => '<ul%s>%s</ul>
+	',
+		'ol' => '<ol%s>%s</ol>
+	',
+		'li' => '<li%s>%s</li>
+	',
+		'error' => '<div%s>%s</div>
+	',
+		'javascriptblock' => '<script%s>%s</script>
+	',
+		'javascriptstart' => '<script>
+	',
+		'javascriptlink' => '<script type="text/javascript" src="%s"%s></script>
+	',
 		'javascriptend' => '</script>'
 	);
 
@@ -332,6 +392,7 @@ class HtmlHelper extends AppHelper {
  */
 	public function link($title, $url = null, $options = array(), $confirmMessage = false) {
 		$escapeTitle = true;
+        $icon = false;
 		if ($url !== null) {
 			$url = $this->url($url);
 		} else {
@@ -341,10 +402,7 @@ class HtmlHelper extends AppHelper {
 			$escapeTitle = false;
 		}
 
-		if (isset($options['escapeTitle'])) {
-			$escapeTitle = $options['escapeTitle'];
-			unset($options['escapeTitle']);
-		} elseif (isset($options['escape'])) {
+		if (isset($options['escape'])) {
 			$escapeTitle = $options['escape'];
 		}
 
@@ -354,21 +412,30 @@ class HtmlHelper extends AppHelper {
 			$title = htmlentities($title, ENT_QUOTES, $escapeTitle);
 		}
 
-		if (!empty($options['confirm'])) {
-			$confirmMessage = $options['confirm'];
-			unset($options['confirm']);
-		}
+        if (!empty($options['confirm'])) {
+            $confirmMessage = $options['confirm'];
+            unset($options['confirm']);
+        }
+
+        if (!empty($options['icon'])) {
+            $icon = $options['icon'];
+            unset($options['icon']);
+        }
 		if ($confirmMessage) {
-			$options['onclick'] = $this->_confirm($confirmMessage, 'return true;', 'return false;', $options);
+			$confirmMessage = str_replace("'", "\'", $confirmMessage);
+			$confirmMessage = str_replace('"', '\"', $confirmMessage);
+			$options['onclick'] = "return confirm('{$confirmMessage}');";
 		} elseif (isset($options['default']) && !$options['default']) {
 			if (isset($options['onclick'])) {
-				$options['onclick'] .= ' ';
+				$options['onclick'] .= ' event.returnValue = false; return false;';
 			} else {
-				$options['onclick'] = '';
+				$options['onclick'] = 'event.returnValue = false; return false;';
 			}
-			$options['onclick'] .= 'event.returnValue = false; return false;';
 			unset($options['default']);
 		}
+        if ($icon) {
+            return sprintf($this->_tags['linkWithIcon'], $url, $this->_parseAttributes($options), $icon, $title);
+        }
 		return sprintf($this->_tags['link'], $url, $this->_parseAttributes($options), $title);
 	}
 
@@ -473,6 +540,7 @@ class HtmlHelper extends AppHelper {
 			return $out;
 		}
 		$this->_View->append($options['block'], $out);
+
 	}
 
 /**

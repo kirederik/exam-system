@@ -1,0 +1,109 @@
+$blue: #003d4a;
+$white: #fff;
+$black: #000;
+$lightGray: rgb(199, 199, 199);
+$footerHeight: 100px;
+
+
+@mixin gradient($from, $to) {
+  background-color: $white;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    // background: $blue;
+    // color: #fff;
+    @include gradient($white, $blue);
+    margin: 0 0 $footerHeight; /* bottom = footer height */
+
+    > header.page-header {
+        border-bottom: 1px solid $blue;
+    }
+    article {
+        &.main {
+            color: $black;
+            height: 100%;
+            .container {
+                height: 100%;
+            }
+        }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: $footerHeight;
+        width: 100%;
+        text-align: center;
+        color: $lightGray;
+        border-top: 1px solid $blue;
+        background: $blue;
+        padding: 20px;
+    }
+}
+
+
+/* SQL log */
+.cake-sql-log {
+    background: #fff;
+    td {
+        padding: 4px 8px;
+        text-align: left;
+        font-family: Monaco, Consolas, "Courier New", monospaced;
+    }
+    caption {
+        color:#fff;
+    }
+    color: #000;
+    table {
+        border-right:0;
+        clear: both;
+        color: #333;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    th {
+        border:0;
+        border-bottom:2px solid #555;
+        text-align: left;
+        padding:4px;
+    }
+    th a {
+        display: block;
+        padding: 2px 4px;
+        text-decoration: none;
+    }
+    th a.asc:after {
+        content: ' ⇣';
+    }
+    th a.desc:after {
+        content: ' ⇡';
+    }
+    table tr td {
+        padding: 6px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom:1px solid #ddd;
+    }
+    table tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+    td.actions {
+        text-align: center;
+        white-space: nowrap;
+    }
+    table td.actions a {
+        margin: 0px 6px;
+        padding:2px 5px;
+    }
+}
+    /** Tables **/
+
