@@ -28,7 +28,7 @@ class DisciplinesController extends AppController {
                 $this->Session->setFlash('Disciplina cadastrada com sucesso.', 'flash');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar esta disciplina.', 'flash', array('alert' => 'error'));
+                $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar esta disciplina.', 'flash', array('alert' => 'danger'));
             }
         }
     }
@@ -36,7 +36,7 @@ class DisciplinesController extends AppController {
     public function edit($id) {
         $discipline = $this->Discipline->findById($id);
         if (!$discipline) {
-            $this->Session->setFlash('Disciplina não encontrada', 'flash', array('alert' => 'error'));
+            $this->Session->setFlash('Disciplina não encontrada', 'flash', array('alert' => 'danger'));
             $this->redirect(array('action' => 'index'));
         }
 
@@ -47,7 +47,7 @@ class DisciplinesController extends AppController {
                 $message = 'Saved';
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash('Ops, ocorreu um erro ao atualizar esta disciplina.', 'flash', array('alert' => 'error'));
+                $this->Session->setFlash('Ops, ocorreu um erro ao atualizar esta disciplina.', 'flash', array('alert' => 'danger'));
                 $message = 'Error';
             }
             $this->set(array(

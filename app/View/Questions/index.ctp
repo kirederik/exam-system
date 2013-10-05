@@ -1,5 +1,5 @@
 <header class="panel-heading">
-    <h3 class="panel-title">Disciplinas</h3>
+    <h3 class="panel-title">Questões</h3>
 </header>
 <div class="panel-body">
 
@@ -7,21 +7,32 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Ação</th>
+                <th>Enunciado</th>
+                <th>Disciplina</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>     
-            <?php foreach ($disciplines as $discipline): ?>
+            <?php foreach ($questions as $question): ?>
             <tr>
                 
-                <td> <?php echo $discipline['Discipline']['id'] ?> </td>
-                <td> <?php echo $discipline['Discipline']['name'] ?> </td>
+                <td> <?php echo $question['Question']['id'] ?> </td>
+                <td class="not_that_big"> <?php echo $question['Question']['question_text'] ?> </td>
+                <td> <?php echo $question['Discipline']['name'] ?> </td>
                 <td> 
+                    <?php 
+                        echo $this->Html->link('Ver',
+                            array(
+                                'action' => 'view', $question['Question']['id'],
+                            ), array(
+                                'class' => 'btn btn-success'
+                            )
+                        );
+                    ?>
                     <?php 
                         echo $this->Html->link('Editar',
                             array(
-                                'action' => 'edit', $discipline['Discipline']['id'],
+                                'action' => 'edit', $question['Question']['id'],
                             ), array(
                                 'class' => 'btn btn-info'
                             )
@@ -30,7 +41,7 @@
                     <?php 
                         echo $this->Html->link('Remover',
                             array(
-                                'action' => 'delete', $discipline['Discipline']['id'],
+                                'action' => 'delete', $question['Question']['id'],
                             ), array(
                                 'class' => 'btn btn-danger',
                                 'confirm' => 'Tem certeza?', 
@@ -45,7 +56,7 @@
         </tbody>
     </table>
     <?php 
-        echo $this->Html->link('Nova Disciplina',
+        echo $this->Html->link('Nova Questão',
             array(
                 'action' => 'add',
             ), array(

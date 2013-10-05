@@ -1,5 +1,5 @@
 <header class="panel-heading">
-    <h3 class="panel-title">Disciplinas</h3>
+    <h3 class="panel-title">Categorias</h3>
 </header>
 <div class="panel-body">
 
@@ -12,16 +12,16 @@
             </tr>
         </thead>
         <tbody>     
-            <?php foreach ($disciplines as $discipline): ?>
+            <?php foreach ($categories as $category): ?>
             <tr>
                 
-                <td> <?php echo $discipline['Discipline']['id'] ?> </td>
-                <td> <?php echo $discipline['Discipline']['name'] ?> </td>
+                <td> <?php echo $category['Category']['id'] ?> </td>
+                <td> <?php echo $category['Category']['name'] ?> </td>
                 <td> 
                     <?php 
                         echo $this->Html->link('Editar',
                             array(
-                                'action' => 'edit', $discipline['Discipline']['id'],
+                                'action' => 'edit', $category['Category']['id'],
                             ), array(
                                 'class' => 'btn btn-info'
                             )
@@ -30,7 +30,7 @@
                     <?php 
                         echo $this->Html->link('Remover',
                             array(
-                                'action' => 'delete', $discipline['Discipline']['id'],
+                                'action' => 'delete', $category['Category']['id'],
                             ), array(
                                 'class' => 'btn btn-danger',
                                 'confirm' => 'Tem certeza?', 
@@ -45,7 +45,7 @@
         </tbody>
     </table>
     <?php 
-        echo $this->Html->link('Nova Disciplina',
+        echo $this->Html->link('Nova Categoria',
             array(
                 'action' => 'add',
             ), array(

@@ -1,9 +1,10 @@
 <header class="panel-heading">
-    <h3 class="panel-title">Nova Disciplina</h3>
+    <h3 class="panel-title">Nova Categoria</h3>
 </header>
 <div class="panel-body">
 
-<?php echo $this->Form->create('Discipline', array(
+
+<?php echo $this->Form->create('Category', array(
     'class' => 'form-horizontal', 
     'role' => 'form',
     'inputDefaults' => array(
@@ -29,8 +30,7 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
             <?php 
                 echo $this->Html->link('Cancelar', array('action' => 'index'), array('class' => "btn btn-default"));
-            ?>        
-        </div>
+            ?>        </div>
     </div>
 <?php echo $this->Form->end(); ?>
 

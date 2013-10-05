@@ -30,6 +30,13 @@ body {
     background: #003d4a;
     padding: 20px; }
 
+textarea {
+  width: 600px!important;
+  height: 150px!important; }
+
+table td.not_that_big {
+  max-width: 300px; }
+
 /* SQL log */
 .cake-sql-log {
   background: #fff;
