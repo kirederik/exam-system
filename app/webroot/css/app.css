@@ -30,9 +30,50 @@ body {
     background: #003d4a;
     padding: 20px; }
 
+ol.mainText {
+  counter-reset: li;
+  list-style-type: none;
+  font-size: 17px;
+  font-family: "Trebuchet MS"; }
+  ol.mainText > li::before {
+    content: counter(li) ")";
+    font-weight: bold;
+    counter-increment: li;
+    margin-right: 10px;
+    line-height: 0; }
+  ol.mainText li {
+    margin-bottom: 20px; }
+  ol.mainText ol.alternatives {
+    margin-top: 10px;
+    margin-left: -10px;
+    font-size: 14px;
+    list-style-type: none;
+    counter-reset: list; }
+    ol.mainText ol.alternatives input {
+      display: inline;
+      margin-bottom: 5px;
+      margin-top: 5px; }
+    ol.mainText ol.alternatives li {
+      display: inline; }
+    ol.mainText ol.alternatives > li:before {
+      content: counter(list, lower-alpha) ") ";
+      counter-increment: list;
+      font-weight: bold; }
+    ol.mainText ol.alternatives > li::after {
+      white-space: pre;
+      content: '\A'; }
+
+.correctAnswer {
+  color: light-green;
+  font-weight: bold; }
+
 textarea {
   width: 600px!important;
   height: 150px!important; }
+
+fieldset.alternatives textarea {
+  width: 600px!important;
+  height: 60px!important; }
 
 table td.not_that_big {
   max-width: 300px; }

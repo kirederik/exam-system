@@ -50,10 +50,70 @@ body {
     }
 }
 
+ol.mainText {
+    counter-reset: li;
+    list-style-type: none;
+    font-size: 17px;
+    font-family: "Trebuchet MS";
+    > li::before {
+        content: counter(li) ')';
+        font-weight: bold;
+        counter-increment: li;
+        margin-right: 10px;
+        line-height: 0;
+    }
+    li {
+        margin-bottom: 20px; 
+    }
+    ol.alternatives {
+        margin-top: 10px;
+        margin-left: -10px;
+        font-size: 14px;
+        list-style-type:  none;
+        counter-reset: list;
+        input {
+            display: inline;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        li {
+            display: inline;
+        }
+        > li:before {
+            content: counter(list, lower-alpha) ") ";
+            counter-increment: list;
+            font-weight: bold;
+        }
+        > li::after {
+            white-space: pre;
+            content:'\A';
+        }
+
+
+    }
+}
+
+
+.correctAnswer {
+    color: light-green;
+    font-weight: bold;
+}
+
 textarea {
     width: 600px!important;
     height: 150px!important;
+
 }
+
+fieldset {
+    &.alternatives {
+        textarea {
+            width: 600px!important;
+            height: 60px!important;
+        }
+    }
+}
+
 
 table {
     td {

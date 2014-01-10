@@ -15,8 +15,31 @@ class Discipline extends AppModel {
             'className' => 'Question',
             'foreignKey' => 'discipline_id',
             'dependent' => true
+        ),
+        'DisciplineCategory' => array(
+            'className' => 'DisciplinesCategory',
+            'foreignKey' => 'discipline_id',
+            'dependent' => true
+        ),
+        'Exercise' => array(
+            'className' => 'Exercise',
+            'foreignKey' => 'discipline_id',
+            'dependent' => true
+        ),
+        'ExamsDiscipline' => array(
+            'className' => 'ExamsDiscipline',
+            'dependent' => true
         )
     );
+
+    // public $hasAndBelongsToMany = array(
+    //     'Category' => array(
+    //         'className' => 'Category',
+    //         'joinTable' => 'disciplines_categories',
+    //         'foreignKey' => 'discipline_id',
+    //         'associationForeignKey' => 'category_id',
+    //     )
+    // )
 
 }
 

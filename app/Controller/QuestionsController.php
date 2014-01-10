@@ -24,7 +24,8 @@ class QuestionsController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Question->create();
-            if ($this->Question->save($this->request->data)) {
+            unset($this->Question->Alternative->validate['company_id']);
+            if ($this->Question->saveAssociated($this->request->data)) {
                 $this->Session->setFlash('Questão cadastrada com sucesso.', 'flash');
                 $this->redirect(array('action' => 'index'));
             } else {
@@ -32,6 +33,7 @@ class QuestionsController extends AppController {
             }
         } else {
             $disciplines = $this->Question->Discipline->find('list');
+            $this->set('alternatives', $this->Question->Alternative->find('list'));
             $this->set(compact('disciplines'));
 
         }
@@ -46,7 +48,9 @@ class QuestionsController extends AppController {
 
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->Question->id = $id;
-            if ($this->Question->save($this->request->data)) {
+            //if ($this->Question->save($this->request->data)) {
+            unset($this->Question->Alternative->validate['company_id']);
+            if ($this->Question->saveAssociated($this->request->data)) {
                 $this->Session->setFlash('Questão atualizada com sucesso', 'flash');
                 $message = 'Saved';
                 $this->redirect(array('action' => 'index'));
@@ -70,7 +74,7 @@ class QuestionsController extends AppController {
     }
 
     public function delete($id) {
-        if ($this->Question->delete($id)) {
+        if ($this->Question->delete($id, true)) {
             $message = 'Deleted';
         } else {
             $message = 'Error';

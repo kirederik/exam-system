@@ -33,8 +33,6 @@ create table questions (
     correct_comment text,
     wrong_comment text,
     imagem_location varchar(50),
-    show_correct boolean default true,
-    show_wrong boolean default true,
     created DATETIME DEFAULT NULL,
     modified DATETIME DEFAULT NULL,
     discipline_id int unsigned not null,
@@ -63,9 +61,11 @@ create table exercises(
     id int unsigned not null auto_increment primary key,
     discipline_id int unsigned not null,
     quantity int not null,
+    first_question_id int unsigned not null,
     created DATETIME DEFAULT NULL,
     modified DATETIME DEFAULT NULL,
-    foreign key(discipline_id) references disciplines(id)
+    foreign key(discipline_id) references disciplines(id),
+    foreign key(first_question_id) references questions(id)
 );
 
 create table exams(
@@ -77,6 +77,7 @@ create table exams_disciplines(
     id int unsigned not null auto_increment primary key,
     discipline_id int unsigned not null,
     exam_id int unsigned not null,
+    amount int,
     foreign key(discipline_id) references disciplines(id),
     foreign key(exam_id) references exams(id)
 );

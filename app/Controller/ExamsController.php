@@ -1,0 +1,161 @@
+<?php
+App::uses('AppController', 'Controller');
+/**
+ * Exams Controller
+ *
+ * @property Exam $Exam
+ * @property PaginatorComponent $Paginator
+ */
+class ExamsController extends AppController {
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
+
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
+		$this->Exam->recursive = 0;
+		// $this->set('exams', $this->Paginator->paginate());
+		$this->set('exams', $this->Exam->find('all'));
+	}
+
+	public function exams() {
+		$this->set('exams', $this->Exam->find('all'));
+	}
+
+	public function do_exam($id = null) {
+		$this->loadModel('Question');
+		$this->loadModel('Discipline');
+
+		if (!$this->Exam->exists($id)) {
+			throw new NotFoundException(__('Invalid test'));
+		}
+		$exam = $this->Exam->findById($id);
+
+		$questions = array();
+		foreach ($exam['ExamsDiscipline'] as $discipline) {
+			if ($discipline['amount'] > 0) {
+				$questions = array_merge($questions, 
+					$this->Question->find('all', 
+						array(						
+							'conditions' => array('Question.discipline_id' => $discipline["discipline_id"]),
+							'limit' => $discipline['amount'],
+							'order' => 'RAND()'
+						)
+					)
+				);
+			}
+		}
+
+		$this->set('exam', $exam);
+		$this->set('questions', $questions);
+
+	}
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		if (!$this->Exam->exists($id)) {
+			throw new NotFoundException(__('Invalid test'));
+		}
+		$exam = $this->Exam->findById($id);
+		$query = "select * from disciplines where";
+		foreach ($exam["ExamsDiscipline"] as $discipline) {
+			$query .= " id = ". $discipline["discipline_id"] . ' or ';
+		}
+		$query .= 'id = NULL;'; // Never happens
+		$this->set('disciplines', $this->Exam->query($query));
+		$this->set('exam', $exam);
+	}
+
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+
+		if ($this->request->is('post')) {
+			$this->Exam->create();
+			if ($this->Exam->saveAssociated($this->request->data)) {
+				$this->Session->setFlash('Simulado adicionado com sucesso.', 'flash');
+				return $this->redirect(array('action' => 'index'));
+			} else {
+                $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar este simulado.', 'flash', array('alert' => 'danger'));
+			}
+		}
+		$categories = $this->Exam->Category->find('list');
+		$disciplines = $this->Exam->query('select * from disciplines;');
+		$this->set(compact('categories'));
+		$this->set(compact('disciplines'));
+	}
+
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function edit($id = null) {
+		if (!$this->Exam->exists($id)) {
+            $this->Session->setFlash('Simulado não encontrado', 'flash', array('alert' => 'danger'));
+            $this->redirect(array('action' => 'index'));
+        }
+
+		if ($this->request->is('post') || $this->request->is('put')) {
+            $this->Exam->id = $id;
+			if ($this->Exam->saveAssociated($this->request->data)) {
+				$this->Session->setFlash('Simulado editado com sucesso.', 'flash');
+				return $this->redirect(array('action' => 'index'));
+			} else {
+                $this->Session->setFlash('Ops, ocorreu um erro ao salvar este simulado.', 'flash', array('alert' => 'danger'));
+			}
+		} else {
+			$options = array('conditions' => array('Exam.' . $this->Exam->primaryKey => $id));
+			$this->request->data = $this->Exam->find('first', $options);
+		}
+		$categories = $this->Exam->Category->find('list');
+		$exam = $this->Exam->findById($id);
+		$query = "select * from disciplines where";
+		foreach ($exam["ExamsDiscipline"] as $discipline) {
+			$query .= " id = ". $discipline["discipline_id"] . ' or ';
+		}
+		$query .= 'id = NULL;'; // Never happens
+		$this->set('disciplines', $this->Exam->query($query));
+		$this->set('exam', $exam);
+		$this->set(compact('categories'));
+	}
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		$this->Exam->id = $id;
+		if (!$this->Exam->exists()) {
+            $this->Session->setFlash('Simulado não encontrado', 'flash', array('alert' => 'danger'));
+            $this->redirect(array('action' => 'index'));
+        }
+		// $this->request->onlyAllow('post', 'delete');
+		if ($this->Exam->delete()) {
+			$this->Session->setFlash('Simulado deletado com sucesso.', 'flash');
+		} else {
+            $this->Session->setFlash('Ops, ocorreu um erro ao deletar este simulado.', 'flash', array('alert' => 'danger'));
+		}
+		return $this->redirect(array('action' => 'index'));
+	}}

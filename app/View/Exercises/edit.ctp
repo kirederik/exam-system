@@ -1,10 +1,11 @@
+
 <header class="panel-heading">
-    <h3 class="panel-title">Nova Categoria</h3>
+    <h3 class="panel-title">Editando Exercício</h3>
 </header>
 <div class="panel-body">
 
 
-<?php echo $this->Form->create('Category', array(
+<?php echo $this->Form->create('Exercise', array(
     'class' => 'form-horizontal', 
     'role' => 'form',
     'inputDefaults' => array(
@@ -18,9 +19,24 @@
     ))); ?>
     <fieldset>
         <?php  
-        echo $this->Form->input('name', 
+        echo $this->Form->input('discipline_id', 
             array(
-                'label' => array('text' => 'Nome', 'class' => 'col-lg-2 control-label')
+                'label' => array('text' => 'Disciplina', 'class' => 'col-lg-2 control-label')
+            )
+        );
+        ?>
+         <?php  
+        echo $this->Form->input('question', 
+            array(
+                'label' => array('text' => 'Primeira Questão', 'class' => 'col-lg-2 control-label')
+            )
+        );
+        ?>
+        <?php  
+        echo $this->Form->input('quantity', 
+            array(
+                'label' => array('text' => 'Número de Questões', 'class' => 'col-lg-2 control-label'),
+                'type' => 'number'
             )
         );
         ?>
@@ -30,9 +46,10 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
             <?php 
                 echo $this->Html->link('Cancelar', array('action' => 'index'), array('class' => "btn btn-default"));
-            ?>
+            ?>        
         </div>
     </div>
 <?php echo $this->Form->end(); ?>
 
 </div>
+

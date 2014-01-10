@@ -48,7 +48,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost/derik/exam-system/">Admin</a>
+                <a class="navbar-brand" href="http://localhost/exam-system">Admin</a>
             </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -88,7 +88,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         </article>    
 
         <footer class="footer">
-            Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados
+            Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados    
         </footer>
     </body>
 </html>

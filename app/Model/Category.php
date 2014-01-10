@@ -10,6 +10,25 @@ class Category extends AppModel {
         ),
     );
 
+    public  $hasMany = array(
+        'DisciplineCategory'  => array(
+            'className' => 'DisciplinesCategory'
+        ),
+        'Exam' => array(
+            'className' => 'Exam',
+            'dependent' => true
+        )
+    );
+
+    // public $hasAndBelongsToMany = array(
+    //     'Discipline' => array(
+    //         'className' => 'Discipline',
+    //         'joinTable' => 'disciplines_categories',
+    //         'foreignKey' => 'category_id',
+    //         'associationForeignKey' => 'discipline_id',
+    //     )
+    // )
+
     // public $hasAndBelongsToMany = array(
     //     'Discipline' => array(
     //         'className'              => 'Discipline',

@@ -20,6 +20,15 @@ class Question extends AppModel {
         )
     );
 
+    public $hasMany = array(
+        'Alternative' => array(
+            'className' => 'Alternative',
+            'foreignKey' => 'question_id',
+            'dependent'=> true,
+
+        )
+    );
+
     // public $hasAndBelongsToMany = array(
     //     'Discipline' => array(
     //         'className'              => 'Discipline',
