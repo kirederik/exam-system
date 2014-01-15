@@ -1,7 +1,7 @@
-drop database if exists simulados;
-create database simulados CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+drop database if exists test_simulados;
+create database test_simulados CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-use simulados;
+use test_simulados;
 
 create table disciplines (
     id int unsigned not null auto_increment primary key,
@@ -70,7 +70,8 @@ create table exercises(
 
 create table exams(
     id int unsigned not null auto_increment primary key,
-    category_id int unsigned not null
+    category_id int unsigned not null,
+    time_minutes int signed
 );
 
 create table exams_disciplines(
@@ -90,6 +91,8 @@ CREATE TABLE users (
     password varchar(250) NOT NULL,
     role VARCHAR(20),
     nome varchar(55) NOT NULL,
+    logged int default 0,
+    logged_time int,
     expiracao bigint(20) DEFAULT NULL
 );                 
 

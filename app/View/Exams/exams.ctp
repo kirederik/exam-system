@@ -12,6 +12,7 @@
             <p>Para saber detalhes dos Simulados e dos Exames de habilitação para Arrais-Amador e Motonauta, clique aqui.
             
             <p>Caso encontre algum erro nas questões ou no texto dos simulados, por favor, escreva para nós. <a href="http://www.portaldoamador.com.br/paginas/contato.html">Clique aqui</a> para preencher o formulário e enviar.</p>
+            <p><i class="glyphicon glyphicon-arrow-right red"></i><strong>  Ao terminar seu estudo, não esqueça de sair do sistema.</strong> O botão para sair está no canto superior direito.</p>
         </div>
     </section>
     <section class="panel panel-info">

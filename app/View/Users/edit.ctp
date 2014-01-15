@@ -40,6 +40,7 @@
                 'label' => array('text' => 'Telefone', 'class' => 'col-lg-2 control-label')
             )
         );
+        echo $this->Form->input('expiracao', array("type" => "hidden"));
         echo $this->Form->input('new_password', 
             array("type" => "password",
                 'label' => array('text' => 'Senha', 'class' => 'col-lg-2 control-label')

@@ -25,6 +25,11 @@
                 'label' => array('text' => 'Categoria', 'class' => 'col-lg-2 control-label')
             )
         );
+        echo $this->Form->input('time_minutes', 
+            array(
+                'label' => array('text' => 'Tempo (em minutos)', 'class' => 'col-lg-2 control-label')
+            )
+        );
         ?>
     </fieldset>
     <fieldset>

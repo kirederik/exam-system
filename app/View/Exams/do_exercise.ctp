@@ -5,12 +5,14 @@
 
 
 <div class="panel-body unselect">
-    <div id="question-carousel" data-total="<?php echo count($questions); ?>" class="carousel slide" data-wrap="false">
+    <?php $count = count($questions); ?>
+    <div id="question-carousel" data-total="<?php echo $count; ?>" class="carousel slide" data-wrap="false">
         <!-- Indicators -->
         <div class="carousel-inner">
             <?php foreach ($questions as $index => $question) { ?>
                 <div class="item mainText <?php if ($index == 0) echo "active" ?>">
-                    <?php echo $index + 1 . ")". "  ". $question['Question']['question_text']; ?>
+                    <p><?php echo "Questão ".  ($index + 1) . " de ".$count . ":"; ?></p>
+                    <?php echo $question['Question']['question_text']; ?>
                     <form>
                         <ol class="alternatives">
                             <?php

@@ -3,7 +3,8 @@
 </header>
 <div class="panel-body unselect" >
 
-    <ol class="mainText" data-total="<?php echo count($questions); ?>">
+    <ol class="mainText" data-total="<?php echo count($questions); ?>"
+        data-time="<?php echo $exam['Exam']['time_minutes']; ?>">
         <?php shuffle($questions); ?>
         <?php foreach ($questions as $index => $question) { ?>
             <li class="question" id='<?php echo "mquestion" . $index ?>'>
@@ -194,7 +195,8 @@
             })
 
             // set the date we're counting down to
-            var target_date = new Date().getTime() + 60*60*4 * 1000;
+            var minutes = Number($(".mainText").data("time"));
+            var target_date = new Date().getTime() + 60 * minutes * 1000;
 
             // variables for time units
             var days, hours, minutes, seconds;

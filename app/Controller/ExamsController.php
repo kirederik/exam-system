@@ -27,7 +27,7 @@ class ExamsController extends AppController {
 
 	public function isAuthorized($user) {
 	    // All registered users can add posts
-	    if ($this->action === 'exams' || $this->action ==="do_exam") {
+	    if ($this->action === 'exams' || $this->action ==="do_exam" || $this->action ==="do_exercise" ) {
             if ((int) $user['expiracao'] < time() - (32 * 24 * 60 * 60)) {
 	            parent::isAuthorized($user);
 	        } else {

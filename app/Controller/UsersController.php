@@ -21,7 +21,8 @@ class UsersController extends AppController {
                 $lt =  $this->Auth->user('logged_time');
                 if ((int)  $this->Auth->user('logged') == 1 && 
                     (time() - $lt) / 60 < 30) {
-                    $this->Session->setFlash('Usuário já logado. Este evento será reportado', 'flash', array('alert' => 'danger'));    
+                    $this->Session->setFlash('Usuário já logado. Este evento será reportado', 'flash', 
+                        array('alert' => 'danger'));    
                     $this->redirect($this->Auth->logout());
                 }  
                 $this->request->data['User']['logged'] = 1;
@@ -32,6 +33,7 @@ class UsersController extends AppController {
             }
             else {
                 $this->Session->setFlash('Usuário ou senha inválidos. Tente novamente.', 'flash', array('alert' => 'danger'));
+                unset($this->request->data['User']['password']);
             }
         }
     }
@@ -54,7 +56,7 @@ class UsersController extends AppController {
 
     public function index() {
         if($this->request->is('post')) {
-            $user = $this->User->find("first",array('condition'=>array('username LIKE'=> '%'.$this->request->data['User']['username'].'%')));
+            $user = $this->User->nameLike($this->request->data['User']['username']);
             $this->redirect(array('action' => 'edit' , $user['User']['id']));
         } else {
             $this->set('users', $this->User->find('all', array('limit' => 25)));
@@ -65,30 +67,17 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             # logout user
         } else {
-            $this->set('users', $this->User->find('all', array('conditions' => array('logged' => 1))));
+            $this->set('users', $this->User->logged());
         }
     }
 
 
     public function expired() {
         if($this->request->is('post')) {
-            $user = $this->User->find("first", array('conditions' => 
-                array(
-                    'AND' => 
-                        array(
-                            'username LIKE'=> '%'.$this->request->data['User']['username'].'%', 
-                            'expiracao <' => time() - (32 * 24 * 60 * 60)
-                        )
-                    )
-                )
-            );
+            $user = $this->User->expiredUser($this->request->data['User']['username']);
             if(!$user) {
                 $this->Session->setFlash('Usuário não encontrado', 'flash', array('alert' => 'danger'));
-                $this->set('users', $this->User->find('all', 
-                    array('limit' => 30, 'conditions' => array(
-                        'expiracao <' => time() - (32 * 24 * 60 * 60)
-                    )
-                )));
+                $this->set('users', $this->User->expired());
             } else {
                 $this->set('users', array($user));
             }
@@ -99,11 +88,7 @@ class UsersController extends AppController {
                 $this->redirect(array('action' => 'index'));
             }
         } else {
-            $this->set('users', $this->User->find('all', 
-                array('limit' => 30, 'conditions' => array(
-                    'expiracao <' => time() - (32 * 24 * 60 * 60)
-                )
-            )));
+            $this->set('users', $this->User->expired());
         }
     }
 

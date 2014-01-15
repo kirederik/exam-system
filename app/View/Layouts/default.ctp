@@ -48,7 +48,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost/exam-system">Home</a>
+                <!-- <a class="navbar-brand" href="http://localhost/exam-system">Home</a> -->
+                <?php echo $this->Html->link('Home', 
+                    array('controller' => '', 'action' => 'index'),
+                    array('class' => "navbar-brand")
+                ); ?>
             </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -117,8 +121,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <header class="page-header">
                 <h1 class="container"><?php echo $this->Html->image("logo_sem_fundo_small.png", array('alt' => 'Portal do Amador', 'class' => 'logo')); ?> Simulados Online 2.0 
                     <small>
-                        <?php echo $this->Html->link('Logout', 
+                        <?php echo $this->Html->link('Sair', 
                             array('controller' => 'Users', 'action' => 'logout')
+                            # , array('class' => 'btn btn-info')
                         ); ?>
                     </small>
                 </h1>

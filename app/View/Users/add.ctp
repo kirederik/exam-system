@@ -3,7 +3,6 @@
 </header>
 <div class="panel-body">
 
-
 <?php echo $this->Form->create('User', array(
     'class' => 'form-horizontal', 
     'role' => 'form',
@@ -43,12 +42,6 @@
             array(
                 "type" => "hidden",
                 "value" => "user",
-            )
-        );
-        echo $this->Form->input('expiracao', 
-            array(
-                "type" => "hidden",
-                "value" => "1234",
             )
         );
         echo $this->Form->input('password', 

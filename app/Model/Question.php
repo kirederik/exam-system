@@ -29,31 +29,9 @@ class Question extends AppModel {
         )
     );
 
-    // public $hasAndBelongsToMany = array(
-    //     'Discipline' => array(
-    //         'className'              => 'Discipline',
-    //         'joinTable'              => 'disciplines_categories',
-    //         'foreignKey'             => 'category_id',
-    //         'associationForeignKey'  => 'discipline_id',
-    //         'unique'                 => true
-    //     ),
-    //     'Instrutor' => array(
-    //         'className'              => 'Instrutor',
-    //         'joinTable'              => 'instrutors_turmas',
-    //         'foreignKey'             => 'codigo_turma',
-    //         'associationForeignKey'  => 'codigo_instrutor',
-    //         'with'                   => 'InstrutorsTurmas',
-    //         'unique'                 => true
-    //     ),
-    //     'Equipamento' => array(
-    //         'className'              => 'Equipamento',
-    //         'joinTable'              => 'equipamentos_turmas',
-    //         'foreignKey'             => 'codigo_turma',
-    //         'associationForeignKey'  => 'codigo_equipamento',
-    //         'with'                   => 'EquipamentosTurmas',
-    //         'unique'                 => true
-    //     )
-    // )
+    public function byDiscipline($did = '') {
+        return $this->find('all', array('conditions' => array('discipline_id' => $did)));
+    }
 }
 
 ?>

@@ -5,7 +5,16 @@ class QuestionsController extends AppController {
     public $components = array('RequestHandler');
 
     public function index() {
+        if ($this->request->is('post')) {}
         $questions = $this->Question->find('all', array("limit" => 10));
+        $this->set(array(
+            'questions' => $questions,
+            '_serialize' => array('questions')
+        ));
+    }
+
+    public function byDiscipline($discipline = null) {
+        $questions = $this->Question->byDiscipline($discipline);
         $this->set(array(
             'questions' => $questions,
             '_serialize' => array('questions')
