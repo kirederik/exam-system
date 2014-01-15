@@ -3,7 +3,32 @@ html {
   position: relative;
   min-height: 100%; }
 
+h1, h2, h3, h4, h5 {
+  font-family: "Trebuchet MS"; }
+
+.container-logo {
+  margin-bottom: -2%; }
+
+.logo {
+  width: 10%;
+  min-width: 200px; }
+
+.partial-logo {
+  background: url("../img/timao2.gif") no-repeat;
+  line-height: 25px; }
+
+.mainheader .page-header {
+  border-bottom: 1px solid #003d4a; }
+  .mainheader .page-header h1 {
+    vertical-align: bottom; }
+    .mainheader .page-header h1 small a {
+      vertical-align: bottom; }
+
+.inline-submit {
+  margin-left: 5px; }
+
 body {
+  font-family: "Trebuchet MS";
   background-color: white;
   background-image: -moz-linear-gradient(white, #003d4a);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#003d4a));
@@ -11,6 +36,12 @@ body {
   background-image: -o-linear-gradient(white, #003d4a);
   margin: 0 0 100px;
   /* bottom = footer height */ }
+  @media print {
+    body {
+      display: none; } }
+  @media print {
+    body .logo {
+      display: block; } }
   body > header.page-header {
     border-bottom: 1px solid #003d4a; }
   body article.main {
@@ -30,36 +61,63 @@ body {
     background: #003d4a;
     padding: 20px; }
 
-ol.mainText {
+.action-buttons {
+  text-align: center;
+  width: 100%; }
+
+.right-answer {
+  color: #3c763d; }
+
+.wrong-answer {
+  color: #a94442;
+  line-height: 20px;
+  vertical-align: bottom; }
+
+.feedback {
+  margin-right: 5px;
+  margin-left: -23px; }
+
+.unselect,
+.unselect:focus {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline-style: none;
+  /*IE*/ }
+
+.mainText {
   counter-reset: li;
   list-style-type: none;
   font-size: 17px;
   font-family: "Trebuchet MS"; }
-  ol.mainText > li::before {
+  .mainText > li::before {
     content: counter(li) ")";
     font-weight: bold;
     counter-increment: li;
     margin-right: 10px;
     line-height: 0; }
-  ol.mainText li {
+  .mainText li {
     margin-bottom: 20px; }
-  ol.mainText ol.alternatives {
+  .mainText ol.alternatives {
     margin-top: 10px;
     margin-left: -10px;
     font-size: 14px;
     list-style-type: none;
     counter-reset: list; }
-    ol.mainText ol.alternatives input {
+    .mainText ol.alternatives input {
       display: inline;
       margin-bottom: 5px;
       margin-top: 5px; }
-    ol.mainText ol.alternatives li {
+    .mainText ol.alternatives li {
       display: inline; }
-    ol.mainText ol.alternatives > li:before {
+    .mainText ol.alternatives > li:before {
       content: counter(list, lower-alpha) ") ";
       counter-increment: list;
       font-weight: bold; }
-    ol.mainText ol.alternatives > li::after {
+    .mainText ol.alternatives > li::after {
       white-space: pre;
       content: '\A'; }
 

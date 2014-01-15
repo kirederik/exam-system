@@ -220,6 +220,7 @@
 	Configure::write('Session', array(
 		'defaults' => 'php'
 	));
+	Configure::write('Session.timeout', '250');
 
 /**
  * A random string used in security hashing methods.

@@ -22,8 +22,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title><?php echo $cakeDescription ?>: <?php echo $title_for_layout; ?></title>
+        <meta charset="utf8" />
+        <title>Simulados - Portal do Amador</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <?php
@@ -38,7 +38,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         ?>
     </head>
     <body>
-
+        <?php if (AuthComponent::user('role') == 'admin') { ?>    
         <nav class="navbar navbar-default" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -48,37 +48,88 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost/exam-system">Admin</a>
+                <a class="navbar-brand" href="http://localhost/exam-system">Home</a>
             </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <li class="<?php if($this->params['controller'] == 'Disciplines') echo "active" ?>">
+                        <?php echo $this->Html->link('Disciplinas', 
+                            array('controller' => 'Disciplines', 'action' => 'index')
+                        ); ?>
+                    </li>
+                    <li class="<?php if($this->params['controller'] == 'Questions') echo "active" ?>">
+                        <?php echo $this->Html->link('Questões', 
+                            array('controller' => 'Questions', 'action' => 'index')
+                        ); ?>
+                    </li>
+                    <li class="<?php if($this->params['controller'] == 'Categories') echo "active" ?>">
+                        <?php echo $this->Html->link('Categorias', 
+                            array('controller' => 'Categories', 'action' => 'index')
+                        ); ?>
+                    </li>
+                    <li class="<?php if($this->params['controller'] == 'Exams') echo "active" ?>">
+                        <?php echo $this->Html->link('Provas', 
+                            array('controller' => 'Exams', 'action' => 'index')
+                        ); ?>
+                    </li>
+                    <li class="dropdown <?php if($this->params['controller'] == 'Users') echo "active" ?>">                        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li>
+                                <?php echo $this->Html->link('Lista', 
+                                    array('controller' => 'Users', 'action' => 'index')
+                                ); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Html->link('Novo', 
+                                    array('controller' => 'Users', 'action' => 'add')
+                                ); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Html->link('Usuários Expirados', 
+                                    array('controller' => 'Users', 'action' => 'expired')
+                                ); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Html->link('Usuários Logados', 
+                                    array('controller' => 'Users', 'action' => 'loggedin')
+                                ); ?>
+                            </li>
+
                         </ul>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link('Logout', 
+                            array('controller' => 'Users', 'action' => 'logout')
+                        ); ?>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
+        <?php } ?>
 
-        <header class="page-header">
-            <h1 class="container">Simulados  <small>Portal do Amador</small></h1>
-        </header>
+        <div class="mainheader">
+            <div class="container container-logo">
+                
+            </div>
+            <header class="page-header">
+                <h1 class="container"><?php echo $this->Html->image("logo_sem_fundo_small.png", array('alt' => 'Portal do Amador', 'class' => 'logo')); ?> Simulados Online 2.0 
+                    <small>
+                        <?php echo $this->Html->link('Logout', 
+                            array('controller' => 'Users', 'action' => 'logout')
+                        ); ?>
+                    </small>
+                </h1>
+            </header>
+        </div>
 
         <article class="main">
 
             <div class="container">
                 <?php echo $this->Session->flash(); ?>
-                <section class="panel panel-default">
+                <section class="panel panel-primary">
                     
                     <?php echo $this->fetch('content'); ?>
 

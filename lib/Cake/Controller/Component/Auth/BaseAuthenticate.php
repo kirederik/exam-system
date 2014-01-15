@@ -1,7 +1,5 @@
 <?php
 /**
- * PHP 5
- *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
@@ -118,7 +116,7 @@ abstract class BaseAuthenticate {
 		}
 
 		$user = $result[$model];
-		if ($password) {
+		if ($password !== null) {
 			if (!$this->passwordHasher()->check($password, $user[$fields['password']])) {
 				return false;
 			}
@@ -158,7 +156,7 @@ abstract class BaseAuthenticate {
 		if (!is_subclass_of($className, 'AbstractPasswordHasher')) {
 			throw new CakeException(__d('cake_dev', 'Password hasher must extend AbstractPasswordHasher class.'));
 		}
-		$this->_passwordHasher = new $className($config);
+		$this->_passwordHasher = new CustomPasswordHasher();
 		return $this->_passwordHasher;
 	}
 

@@ -25,6 +25,39 @@ class ExercisesController extends AppController {
 		$this->set('exercises', $this->Paginator->paginate());
 	}
 
+	public function exercises() {
+		$this->set('exercises', $this->Exercise->find('all'));
+	}
+
+	public function do_exercises($id = null) {
+		$this->loadModel('Question');
+		$this->loadModel('Discipline');
+
+		if (!$this->Exercise->exists($id)) {
+			throw new NotFoundException(__('Invalid test'));
+		}
+		$exam = $this->Exercise->findById($id);
+
+		$questions = array();
+		foreach ($exercise['ExamsDiscipline'] as $discipline) {
+			if ($discipline['amount'] > 0) {
+				$questions = array_merge($questions, 
+					$this->Question->find('all', 
+						array(						
+							'conditions' => array('Question.discipline_id' => $discipline["discipline_id"]),
+							'limit' => $discipline['amount'],
+							'order' => 'RAND()'
+						)
+					)
+				);
+			}
+		}
+
+		$this->set('exam', $exam);
+		$this->set('questions', $questions);
+
+	}
+
 /**
  * view method
  *

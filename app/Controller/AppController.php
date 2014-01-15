@@ -32,6 +32,40 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array('DebugKit.Toolbar', 'Session');
+	public $components = array(
+		'Session',
+        'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => 'exams',
+                'action' => 'exams'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'users',
+                'action' => 'login',
+            ),
+            'authError' => '',
+            'authenticate' => array(
+	            'Form'
+	        )
+      		, 'authorize' => array('Controller') 
+        )
+    );
+	public function isAuthorized($user) {
+	    // Admin can access every action
+	    if (isset($user['role']) && $user['role'] === 'admin') {
+	        return true;
+	    }
+
+        if ((int) $user['expiracao'] < time() - (32 * 24 * 60 * 60)) {
+            $this->Session->setFlash('Sua conta expirou.', 'flash', array('alert' => 'danger'));    
+            return false;
+        }
+	    // Default deny
+        $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
+	    return false;
+	}
+    public function beforeFilter() {
+        $this->Auth->allow('exams', 'login');
+    }
 
 }

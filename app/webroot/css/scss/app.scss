@@ -18,9 +18,59 @@ html {
     min-height: 100%;
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: "Trebuchet MS";
+
+    
+}
+
+.container-logo {
+    margin-bottom: -2%;
+}
+
+.logo {
+    width: 10%;
+    min-width: 200px;
+}
+
+.partial-logo {
+    background: url("../img/timao2.gif") no-repeat;
+    line-height: 25px;
+
+}
+.mainheader {
+    .page-header {
+        border-bottom: 1px solid #003d4a;
+        h1 {
+            vertical-align: bottom;
+            small {
+                a {
+                    vertical-align: bottom;
+                }
+            }
+        }
+    }
+}
+.inline-submit {
+    margin-left: 5px;
+}
+
 body {
+
+    @media print {
+        display: none;
+    }
+
+    .logo {
+        @media print {
+            display: block;
+        }
+    }
+
     // background: $blue;
     // color: #fff;
+    font-family: "Trebuchet MS";
+
     @include gradient($white, $blue);
     margin: 0 0 $footerHeight; /* bottom = footer height */
 
@@ -50,7 +100,39 @@ body {
     }
 }
 
-ol.mainText {
+.action-buttons {
+    text-align: center;
+    width: 100%;
+}
+
+.right-answer {
+    color: #3c763d;
+}
+
+.wrong-answer {
+    color: #a94442;
+    line-height: 20px;
+    vertical-align: bottom;
+}
+
+.feedback {
+    margin-right: 5px;
+    margin-left: -23px;
+}
+
+.unselect,
+.unselect:focus{
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+outline-style:none;/*IE*/
+}
+
+
+.mainText {
     counter-reset: li;
     list-style-type: none;
     font-size: 17px;

@@ -5,7 +5,7 @@ class QuestionsController extends AppController {
     public $components = array('RequestHandler');
 
     public function index() {
-        $questions = $this->Question->find('all');
+        $questions = $this->Question->find('all', array("limit" => 10));
         $this->set(array(
             'questions' => $questions,
             '_serialize' => array('questions')

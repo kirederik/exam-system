@@ -1,5 +1,5 @@
 drop database if exists simulados;
-create database simulados;
+create database simulados CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 use simulados;
 
@@ -82,5 +82,23 @@ create table exams_disciplines(
     foreign key(exam_id) references exams(id)
 );
 
+CREATE TABLE users (        
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username varchar(50) UNIQUE NOT NULL,
+    exemplar varchar(15) UNIQUE NOT NULL,
+    fone varchar(15) NOT NULL,
+    password varchar(250) NOT NULL,
+    role VARCHAR(20),
+    nome varchar(55) NOT NULL,
+    expiracao bigint(20) DEFAULT NULL
+);                 
+
+
+
 insert into disciplines (name, created) values ('Combate a Incêndio', NOW());
+insert into disciplines (name, created) values ('Sobrevivência ao mar', NOW());
+insert into disciplines (name, created) values ('Legislação Náutica', NOW());
+insert into disciplines (name, created) values ('Manobra de Embarcação', NOW());
+insert into disciplines (name, created) values ('Navegação e Balizamento', NOW());
+insert into disciplines (name, created) values ('Primeiros Socorros', NOW());
 insert into categories (name, created) values ('Motonauta', NOW());

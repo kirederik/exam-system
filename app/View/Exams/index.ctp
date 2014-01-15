@@ -2,7 +2,6 @@
     <h3 class="panel-title">Simulados</h3>
 </header>
 <div class="panel-body">
-
     <table class="table table-striped table-hover ">
         <thead>
             <tr>

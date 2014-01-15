@@ -20,6 +20,23 @@ class ExamsController extends AppController {
  *
  * @return void
  */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // check and update login time
+    }
+
+	public function isAuthorized($user) {
+	    // All registered users can add posts
+	    if ($this->action === 'exams' || $this->action ==="do_exam") {
+            if ((int) $user['expiracao'] < time() - (32 * 24 * 60 * 60)) {
+	            parent::isAuthorized($user);
+	        } else {
+	        	return true;
+	        }
+	    }
+	    return parent::isAuthorized($user);
+	}
+
 	public function index() {
 		$this->Exam->recursive = 0;
 		// $this->set('exams', $this->Paginator->paginate());
@@ -27,7 +44,9 @@ class ExamsController extends AppController {
 	}
 
 	public function exams() {
+		$this->loadModel('Discipline');
 		$this->set('exams', $this->Exam->find('all'));
+		$this->set('disciplines', $this->Discipline->find('all'));
 	}
 
 	public function do_exam($id = null) {
@@ -56,7 +75,25 @@ class ExamsController extends AppController {
 
 		$this->set('exam', $exam);
 		$this->set('questions', $questions);
+	}
 
+	public function do_exercise($discipline = null, $offset = null) {
+		$this->loadModel('Question');
+		$this->loadModel('Discipline');
+
+		if (!$this->Discipline->exists($discipline)) {
+			throw new NotFoundException(__('Invalid discipline'));
+		}
+		$questions = $this->Question->find('all', 
+			array(						
+				'conditions' => array('Question.discipline_id' => $discipline),
+				'limit' => 25,
+				'offset' => 25 * ($offset - 1),
+				'order' => 'Question.id'
+			)
+		);
+		$this->set('questions', $questions);
+		$this->set('number', $offset);
 	}
 /**
  * view method
