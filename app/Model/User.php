@@ -24,7 +24,8 @@ class User extends AppModel {
                 $this->data[$this->alias]['password']
             );
         }
-        if(isset( $this->data[$this->alias]['extend'])) {
+        if(isset($this->data[$this->alias]['extend'])) {
+            echo $this->data[$this->alias]['extend'];
             $t = $this->data[$this->alias]['extend'];
             $this->data[$this->alias]['expiracao'] = (int) time() + ( ((int)$t) * 24 * 60 * 60);
         } else if(!isset($this->data[$this->alias]['expiracao'])) {

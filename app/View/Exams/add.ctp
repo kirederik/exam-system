@@ -25,7 +25,7 @@
         );
         echo $this->Form->input('time_minutes', 
             array(
-                'label' => array('text' => 'Tempo (em minutos)', 'class' => 'col-lg-2 control-label')
+                'type' => 'number', 'label' => array('text' => 'Tempo (em minutos)', 'class' => 'col-lg-2 control-label')
             )
         );
         ?>
