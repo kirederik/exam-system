@@ -63,6 +63,31 @@ h1, h2, h3, h4, h5 {
     }
 }
 
+.highlight {
+    color: #002E5C;
+    font-weight: bold;
+}
+.text-small {
+    font: 11px arial;
+}
+
+.details-modal {
+    @media (min-width: 800px) {
+        width: 75%;
+    }
+    @media (max-width: 800px) {
+        width: 95%;
+    }
+    .botimg {
+        vertical-align: bottom;
+    }
+    .modal-body {
+        background: url('../img/timao__.png') no-repeat center;
+        background-size: contain;
+    }
+}
+
+
 .mainheader {
     .page-header {
         border-bottom: 1px solid #003d4a;

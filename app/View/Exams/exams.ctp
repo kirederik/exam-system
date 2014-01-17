@@ -108,21 +108,71 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-remote='http://portaldoamador.com.br/paginas/simulados/arrais_amador/simulados_area_restrita/sobre_os_simulados_online.html' aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Ajuda sobre os simulados</h4>
-      </div>
-      <div class="modal-body">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <?php echo $this->Html->image("timao2.gif", array('alt' => 'Portal do Amador', 'class' => 'botimg')); ?>                
+                    Ajuda sobre os simulados</h4>
+            </div>
+            <div class="modal-body  text-small">
+                <h5 class="highlight">Caracter&iacute;sticas dos Simulados</h5>
+                <p>
+                    <strong>1. Simulados por Disciplina</strong> - O sistema disponibiliza quest&otilde;es objetivas de m&uacute;ltipla escolha com cinco (5) op&ccedil;&otilde;es de resposta, sendo uma correta,   de modo que o desempenho final na disciplina lhe dir&aacute; se &eacute; preciso estudar mais. Cada simulado por disciplina possui 25 quest&otilde;es, em conson&acirc;ncia com os assuntos e/ou conte&uacute;dos que a Marinha costuma cobrar nas provas que aplica.
+                </p>
+                
+                <p><strong>2. Provas Simuladas (Teste Final)</strong></p>
+                <ul>
+                    <li>
+                        <strong><em>Arrais-Amador</em></strong> - Para o candidato a  categoria de Arrais-Amador, disponibilizamos  duas (2) provas objetivas de m&uacute;ltipla escolha com cinco (5) op&ccedil;&otilde;es de resposta, sendo uma correta, com quest&otilde;es selecionadas de todas as disciplinas. Cada prova possui 40  quest&otilde;es, no mesmo molde e semelhan&ccedil;a da prova oficial.
+                    </li>
+                    <li>
+                        <em><strong> Motonauta</strong></em> - 
+                        Para o candidato a  categoria de Motonauta, disponibilizamos  duas (2) provas objetivas de m&uacute;ltipla escolha com cinco (5)  op&ccedil;&otilde;es de resposta, sendo uma correta, com quest&otilde;es selecionadas de todas as disciplinas exigidas para Motonauta. Cada prova possui 20  quest&otilde;es, no mesmo molde e semelhan&ccedil;a da prova oficial.
+                    </li>
+                </ul>
+
+                <p class="highlight">
+                    <strong>EXAME DE HABILITA&Ccedil;&Atilde;O (Exig&ecirc;ncia da Marinha)</strong>
+                    - Os exames de habilita&ccedil;&atilde;o para  as categorias de Arrais-Amador e Motonauta, ser&atilde;o compostos de duas etapas:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Primeira etapa:</strong><br>
+                        A nova regra, v&aacute;lida a partir de 2 de julho de 2012, exige que a primeira etapa para o exame de Arrais-Amador ser&aacute; constitu&iacute;da de comprova&ccedil;&atilde;o de embarque, de no m&iacute;nimo seis (6) horas. Para Motonauta, o candidato dever&aacute; comprovar ter realizado um m&iacute;nimo de tr&ecirc;s (3) horas de aulas pr&aacute;ticas. A parte pr&aacute;tica ser&aacute; aplicada por entidade n&aacute;utica credenciada junto as Capitanias, Delegacias e Ag&ecirc;ncias pertencentes a Marinha do Brasil.<br>
+                    </li>
+                    <li>
+                        <strong>Segunda  etapa:</strong><br>
+                        Ser&aacute; constitu&iacute;da de prova te&oacute;rica escrita tipo m&uacute;ltipla escolha que ser&aacute; aplicada pelas  Capitanias, Delegacias e  Ag&ecirc;ncias pertencentes a Marinha do Brasil. 
+                    </li>
+                </ul>
+                <p class="highlight">
+                    <strong>DESCRI&Ccedil;&Atilde;O DETALHADA DOS EXAMES:<br> - </strong>
+                    A prova te&oacute;rica ser&aacute; pautada nos seguintes assuntos:
+                </p>
+                <ul>
+                    <li>
+                        <strong><em>Motonauta</em></strong><em> - 
+                        </em>  Legisla&ccedil;&atilde;o N&aacute;utica, Navega&ccedil;&atilde;o e Balizamento, Primeiros Socorros e Sobreviv&ecirc;ncia no Mar. Ser&aacute; constitu&iacute;da de prova escrita com  20 quest&otilde;es tipo m&uacute;ltipla escolha; ter&aacute; dura&ccedil;&atilde;o m&aacute;xima de uma (1) hora e (30) trinta minutos. Ser&aacute; aprovado o candidato que alcan&ccedil;ar um percentual de acertos igual ou superior a 50%.
+                    </li>
+                    <li>
+                        <em><strong>Arrais-Amador</strong></em> - Legisla&ccedil;&atilde;o N&aacute;utica, Manobra de Embarca&ccedil;&atilde;o, Navega&ccedil;&atilde;o e Balizamento, Primeiros Socorros, Combate a Inc&ecirc;ndio e Sobreviv&ecirc;ncia no Mar. Ser&aacute; constitu&iacute;da de  prova escrita com 40 quest&otilde;es tipo m&uacute;ltipla escolha; ter&aacute; dura&ccedil;&atilde;o m&aacute;xima de duas (2) horas. Ser&aacute; aprovado o candidato que alcan&ccedil;ar um percentual de acertos igual ou superior a 50%.
+                    </li>
+                    <li>
+                        <em><strong>Arrais-Amador e Motonauta</strong></em> - O interessado em obter habilita&ccedil;&atilde;o de Arrais-Amador e Motonauta (juntas), em rela&ccedil;&atilde;o a prova escrita, cumprir&aacute; os mesmos  requisitos exigidos para Arrais-Amador. Ou seja, realizar&aacute; somente a prova  para  Arrais-Amador.
+                    </li>
+                </ul>
+                <div id="saiba_mais">
+                    <p align="right"> <span class="highlight">Fonte:  NORMAM-03/DPC - &Uacute;ltima Atualiza&ccedil;&atilde;o: Portaria n&ordm; 29/DPC, de 21/02/2013</span>.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <script>

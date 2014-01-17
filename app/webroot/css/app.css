@@ -35,6 +35,25 @@ h1, h2, h3, h4, h5 {
   .hide-on-large {
     display: none; } }
 
+.highlight {
+  color: #002E5C;
+  font-weight: bold; }
+
+.text-small {
+  font: 11px arial; }
+
+@media (min-width: 800px) {
+  .details-modal {
+    width: 75%; } }
+@media (max-width: 800px) {
+  .details-modal {
+    width: 95%; } }
+.details-modal .botimg {
+  vertical-align: bottom; }
+.details-modal .modal-body {
+  background: url("../img/timao__.png") no-repeat center;
+  background-size: contain; }
+
 .mainheader .page-header {
   border-bottom: 1px solid #003d4a; }
   .mainheader .page-header h1 {
