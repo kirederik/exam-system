@@ -19,12 +19,12 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $lt =  $this->Auth->user('logged_time');
-                if ((int)  $this->Auth->user('logged') == 1 && 
+                if ((int)  $this->Auth->user('logged') == 1 &&
                     (time() - $lt) / 60 < 30) {
-                    $this->Session->setFlash('Usuário já logado. Este evento será reportado', 'flash', 
-                        array('alert' => 'danger'));    
+                    $this->Session->setFlash('Usuário já logado. Este evento será reportado', 'flash',
+                        array('alert' => 'danger'));
                     $this->redirect($this->Auth->logout());
-                }  
+                }
                 $this->request->data['User']['logged'] = 1;
                 $this->request->data['User']['logged_time'] = time();
                 $this->request->data['User']['id'] = $this->Auth->user('id');
@@ -118,6 +118,9 @@ class UsersController extends AppController {
                     }
                 }
             }
+        } else {
+            $categories = $this->User->Category->find('list');
+            $this->set(compact('categories'));
         }
     }
 
@@ -127,7 +130,7 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Usuário inválido'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->request->data['User']['new_password'] != "" || 
+            if ($this->request->data['User']['new_password'] != "" ||
                 $this->request->data['User']['new_conf_password'] != "") {
                 if ($this->request->data['User']['new_conf_password'] == $this->request->data['User']['new_password']) {
                     $this->request->data['User']['password'] = $this->request->data['User']['new_password'];
@@ -135,7 +138,7 @@ class UsersController extends AppController {
                     $this->Session->setFlash('Senhas não conferem.', 'flash', array('alert' => 'danger'));
                     return;
                 }
-            } 
+            }
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash('Usuário editado com sucesso.', 'flash');
                 $this->redirect(array('action' => 'index'));
@@ -144,7 +147,9 @@ class UsersController extends AppController {
             }
         } else {
             unset($this->request->data['User']['password']);
-            $this->request->data = $user;            
+            $this->request->data = $user;
+            $categories = $this->User->Category->find('list');
+            $this->set(compact('categories'));
         }
     }
 

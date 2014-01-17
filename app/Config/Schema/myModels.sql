@@ -7,7 +7,8 @@ create table disciplines (
     id int unsigned not null auto_increment primary key,
     name varchar(75) not null,
     created DATETIME DEFAULT NULL,
-    modified DATETIME DEFAULT NULL
+    modified DATETIME DEFAULT NULL,
+    ordem int
 );
 
 create table categories (
@@ -93,15 +94,18 @@ CREATE TABLE users (
     nome varchar(55) NOT NULL,
     logged int default 0,
     logged_time int,
-    expiracao bigint(20) DEFAULT NULL
+    expiracao bigint(20) DEFAULT NULL,
+    category_id int unsigned not null,
+    foreign key(category_id) references categories(id)
 );                 
 
 
 
-insert into disciplines (name, created) values ('Combate a Incêndio', NOW());
-insert into disciplines (name, created) values ('Sobrevivência ao mar', NOW());
-insert into disciplines (name, created) values ('Legislação Náutica', NOW());
-insert into disciplines (name, created) values ('Manobra de Embarcação', NOW());
-insert into disciplines (name, created) values ('Navegação e Balizamento', NOW());
-insert into disciplines (name, created) values ('Primeiros Socorros', NOW());
+insert into disciplines (name, created, ordem) values ('Combate a Incêndio', NOW(), 5);
+insert into disciplines (name, created, ordem) values ('Sobrevivência ao mar', NOW(), 6);
+insert into disciplines (name, created, ordem) values ('Legislação Náutica', NOW(), 1);
+insert into disciplines (name, created, ordem) values ('Manobra de Embarcação', NOW(), 2);
+insert into disciplines (name, created, ordem) values ('Navegação e Balizamento', NOW(), 3);
+insert into disciplines (name, created, ordem) values ('Primeiros Socorros', NOW(), 4);
+
 insert into categories (name, created) values ('Motonauta', NOW());

@@ -94,6 +94,7 @@ Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
 ));
+App::uses('AuthComponent', 'Controller/Component');
 
 /**
  * Configures default file logging options

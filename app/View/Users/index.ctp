@@ -35,6 +35,7 @@
                 <th>Nome</th>
                 <th>Exemplar</th>
                 <th>Email</th>
+                <th>Categoria</th>
                 <th>Telefone</th>
                 <th>Ação</th>
             </tr>
@@ -46,6 +47,7 @@
                 <td> <?php echo $user['User']['nome'] ?> </td>
                 <td> <?php echo $user['User']['exemplar'] ?> </td>
                 <td> <?php echo $user['User']['username'] ?> </td>
+                <td> <?php echo $user['Category']['name'] ?> </td>
                 <td> <?php echo $user['User']['fone'] ?> </td>
                 <td>
                     <?php

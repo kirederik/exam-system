@@ -45,8 +45,33 @@ class ExamsController extends AppController {
 
 	public function exams() {
 		$this->loadModel('Discipline');
-		$this->set('exams', $this->Exam->find('all'));
-		$this->set('disciplines', $this->Discipline->find('all'));
+		$category = $this->Auth->user('category_id');
+		if ($this->Auth->user('role') == 'admin') {
+			$exams = $this->Exam->find('all');
+			$disciplines = $this->Discipline->find('all', array('order' => 'ordem'));
+		} else {
+			$exams = $this->Exam->find('all',
+				array('conditions' => array('Exam.category_id' => $category))
+			);
+			$disciplines = $this->Discipline->find('all'
+				, array(
+					'order' => 'Discipline.ordem'
+				    , 'joins' => array(
+				        array(
+				            'table' => 'disciplines_categories',
+				            'alias' => 'DisciplinesCategories',
+				            'type' => 'INNER',
+				            'conditions' => array(
+				                'DisciplinesCategories.discipline_id = Discipline.id'
+				            )
+				        )
+				    ),
+					'conditions' => array('DisciplinesCategories.category_id' => $category)
+				)
+			);
+		}
+		$this->set('exams', $exams);
+		$this->set('disciplines', $disciplines);
 	}
 
 	public function do_exam($id = null) {
@@ -61,9 +86,9 @@ class ExamsController extends AppController {
 		$questions = array();
 		foreach ($exam['ExamsDiscipline'] as $discipline) {
 			if ($discipline['amount'] > 0) {
-				$questions = array_merge($questions, 
-					$this->Question->find('all', 
-						array(						
+				$questions = array_merge($questions,
+					$this->Question->find('all',
+						array(
 							'conditions' => array('Question.discipline_id' => $discipline["discipline_id"]),
 							'limit' => $discipline['amount'],
 							'order' => 'RAND()'
@@ -84,8 +109,8 @@ class ExamsController extends AppController {
 		if (!$this->Discipline->exists($discipline)) {
 			throw new NotFoundException(__('Invalid discipline'));
 		}
-		$questions = $this->Question->find('all', 
-			array(						
+		$questions = $this->Question->find('all',
+			array(
 				'conditions' => array('Question.discipline_id' => $discipline),
 				'limit' => 25,
 				'offset' => 25 * ($offset - 1),

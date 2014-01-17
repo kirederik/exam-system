@@ -61,6 +61,9 @@
                 )
             );
         ?>
+    <?php
+        echo $this->Html->link('Próxima', array('action' => 'view', (int)$question['Question']['id'] + 1), array('class' => "btn btn-default"));
+    ?>
     </section>
 </div>
 

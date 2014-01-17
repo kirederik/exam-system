@@ -20,6 +20,21 @@ h1, h2, h3, h4, h5 {
 .red {
   color: red; }
 
+.mygroup {
+  margin-bottom: 10px; }
+
+@media (max-width: 647px) {
+  .hide-on-small {
+    display: none; } }
+
+@media (max-width: 648px) {
+  .center-on-small {
+    text-align: center; } }
+
+@media (min-width: 648px) {
+  .hide-on-large {
+    display: none; } }
+
 .mainheader .page-header {
   border-bottom: 1px solid #003d4a; }
   .mainheader .page-header h1 {
@@ -188,4 +203,9 @@ table td.not_that_big {
     margin: 0px 6px;
     padding: 2px 5px; }
 
-/** Tables **/
+.login-page {
+  max-width: 330px;
+  margin: 0 auto;
+  /** Tables **/ }
+  .login-page .col-lg-3 {
+    width: 100%; }

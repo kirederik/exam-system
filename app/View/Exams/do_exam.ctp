@@ -1,5 +1,5 @@
 <header class="panel-heading">
-    <h3 class="panel-title">Simulado - <?php echo $exam['Category']['name']; ?> <span class="pull-right" id="countdown"></span></h3>
+    <h3 class="panel-title">Simulado <span class="hide-on-small">- <?php echo $exam['Category']['name']; ?></span> <span class="pull-right" id="countdown"></span></h3>
 </header>
 <div class="panel-body unselect" >
 
@@ -52,8 +52,16 @@
             Limpar
         </button>
         <button class="btn btn-default" id="redo">
-            Recomeçar
-        </button>
+            Gerar outra prova
+        </button>                
+        <?php echo $this->Html->link('Voltar a lista',
+            array(
+                'action' => 'exams',
+            ), array(
+                'class' => 'btn btn-default',
+                'id' => 'back'
+            )
+        ); ?>
     </div>
 
     <!-- Modal -->

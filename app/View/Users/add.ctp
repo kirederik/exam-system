@@ -17,6 +17,11 @@
     ))); ?>
     <fieldset>
         <?php  
+        echo $this->Form->input('category_id', 
+            array(
+                'label' => array('text' => 'Categoria', 'class' => 'col-lg-2 control-label')
+            )
+        );
         echo $this->Form->input('username', 
             array(
                 'label' => array('text' => 'Email', 'class' => 'col-lg-2 control-label')

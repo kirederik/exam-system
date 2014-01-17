@@ -16,11 +16,11 @@ class Discipline extends AppModel {
             'foreignKey' => 'discipline_id',
             'dependent' => true
         ),
-        'DisciplineCategory' => array(
-            'className' => 'DisciplinesCategory',
-            'foreignKey' => 'discipline_id',
-            'dependent' => true
-        ),
+        // 'DisciplineCategory' => array(
+        //     'className' => 'DisciplinesCategory',
+        //     'foreignKey' => 'discipline_id',
+        //     'dependent' => true
+        // ),
         'Exercise' => array(
             'className' => 'Exercise',
             'foreignKey' => 'discipline_id',
@@ -32,14 +32,14 @@ class Discipline extends AppModel {
         )
     );
 
-    // public $hasAndBelongsToMany = array(
-    //     'Category' => array(
-    //         'className' => 'Category',
-    //         'joinTable' => 'disciplines_categories',
-    //         'foreignKey' => 'discipline_id',
-    //         'associationForeignKey' => 'category_id',
-    //     )
-    // )
+    public $hasAndBelongsToMany = array(
+        'Category' => array(
+            'className' => 'Category',
+            'joinTable' => 'disciplines_categories',
+            'foreignKey' => 'discipline_id',
+            'associationForeignKey' => 'category_id',
+        )
+    );
 
 }
 

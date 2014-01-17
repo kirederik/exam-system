@@ -2,8 +2,8 @@
 
 App::uses('AppModel', 'Model');
 
-class DisciplineCategory extends AppModel {
-    public $name = "DisciplineCategory";
+class DisciplinesCategory extends AppModel {
+    public $name = "DisciplinesCategory";
     public $validate = array(
         'name' => array(
             'rule' => 'notEmpty'

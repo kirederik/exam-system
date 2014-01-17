@@ -2,11 +2,26 @@
 
 class QuestionsController extends AppController {
 
-    public $components = array('RequestHandler');
+    public $components = array('RequestHandler', 'Paginator');
+
+    public $paginate = array(
+        'limit' => 25,
+        'order' => array(
+            'Question.id' => 'asc'
+        )
+    );
 
     public function index() {
-        if ($this->request->is('post')) {}
-        $questions = $this->Question->find('all', array("limit" => 10));
+        $this->Paginator->settings = $this->paginate;
+
+        if ($this->request->is('post')) {
+            $this->set('nopage', true);
+            $questions = $this->Question->textLike($this->request->data['Question']['question_text']);
+        } else {
+            $this->set('nopage', false);
+            $questions = $this->Paginator->paginate('Question');
+            // $questions = $this->Question->find('all', array("limit" => 10));
+        }
         $this->set(array(
             'questions' => $questions,
             '_serialize' => array('questions')
@@ -62,7 +77,7 @@ class QuestionsController extends AppController {
             if ($this->Question->saveAssociated($this->request->data)) {
                 $this->Session->setFlash('Questão atualizada com sucesso', 'flash');
                 $message = 'Saved';
-                $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Session->setFlash('Ops, ocorreu um erro ao atualizar esta questão.', 'flash', array('alert' => 'danger'));
                 $message = 'Error';

@@ -22,6 +22,18 @@
                 'label' => array('text' => 'Nome', 'class' => 'col-lg-2 control-label')
             )
         );
+        echo $this->Form->input('ordem', 
+            array(
+                'label' => array('text' => 'Ordem', 'class' => 'col-lg-2 control-label')
+            )
+        );
+        echo $this->Form->input('Category', array(
+            'class' => 'checkbox', 
+            'multiple'=>'checkbox',
+            'label' => array('text' => 'Categorias', 'class' => 'col-lg-2 control-label')
+
+        ));
+
         ?>
     </fieldset>
     <div class="form-group">

@@ -6,8 +6,9 @@
     <table class="table table-striped table-hover ">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Ordem</th>
                 <th>Nome</th>
+                <th>Categorias</th>
                 <th>Ação</th>
             </tr>
         </thead>
@@ -15,8 +16,17 @@
             <?php foreach ($disciplines as $discipline): ?>
             <tr>
                 
-                <td> <?php echo $discipline['Discipline']['id'] ?> </td>
+                <td> <?php echo $discipline['Discipline']['ordem'] ?> </td>
                 <td> <?php echo $discipline['Discipline']['name'] ?> </td>
+                <td> <?php $sep = ", "; $amount = count($discipline['Category']); 
+                    foreach ($discipline['Category'] as $key => $value) {
+                    if ($key+1 == $amount ) {
+                        $sep = "";
+                    } elseif ($key+2 == $amount) {
+                        $sep = " e ";
+                    }
+                    echo $value['name'] . $sep . ' ';
+                }?> </td>
                 <td> 
                     <?php 
                         echo $this->Html->link('Editar',

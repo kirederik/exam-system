@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
 
 class Category extends AppModel {
     public $name = "Category";
+    
     public $validate = array(
         'name' => array(
             'rule' => 'notEmpty'
@@ -11,13 +12,11 @@ class Category extends AppModel {
     );
 
     public  $hasMany = array(
-        'DisciplineCategory'  => array(
-            'className' => 'DisciplinesCategory'
-        ),
         'Exam' => array(
             'className' => 'Exam',
             'dependent' => true
-        )
+        ),
+        'User'
     );
 
     // public $hasAndBelongsToMany = array(
@@ -29,14 +28,14 @@ class Category extends AppModel {
     //     )
     // )
 
-    // public $hasAndBelongsToMany = array(
-    //     'Discipline' => array(
-    //         'className'              => 'Discipline',
-    //         'joinTable'              => 'disciplines_categories',
-    //         'foreignKey'             => 'category_id',
-    //         'associationForeignKey'  => 'discipline_id',
-    //         'unique'                 => true
-    //     ),
+    public $hasAndBelongsToMany = array(
+        'Discipline' => array(
+            'className'              => 'Discipline',
+            'joinTable'              => 'disciplines_categories',
+            'foreignKey'             => 'category_id',
+            'associationForeignKey'  => 'discipline_id'
+        )
+    );
     //     'Instrutor' => array(
     //         'className'              => 'Instrutor',
     //         'joinTable'              => 'instrutors_turmas',

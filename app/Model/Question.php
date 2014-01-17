@@ -29,6 +29,18 @@ class Question extends AppModel {
         )
     );
 
+    public function textLike($text='') {
+        return $this->find('all', array(
+            "conditions" => array(
+                "OR" => array(
+                    "question_text LIKE" => "%".$text."%",
+                    "correct_comment LIKE" => "%".$text."%",
+                    "wrong_comment LIKE" => "%".$text."%"
+                )
+            )
+        ));
+    }
+
     public function byDiscipline($did = '') {
         return $this->find('all', array('conditions' => array('discipline_id' => $did)));
     }

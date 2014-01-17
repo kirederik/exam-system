@@ -5,7 +5,7 @@ class DisciplinesController extends AppController {
     public $components = array('RequestHandler');
 
     public function index() {
-        $disciplines = $this->Discipline->find('all');
+        $disciplines = $this->Discipline->find('all', array('order' => 'ordem'));
         $this->set(array(
             'disciplines' => $disciplines,
             '_serialize' => array('disciplines')
@@ -24,12 +24,15 @@ class DisciplinesController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Discipline->create();
-            if ($this->Discipline->save($this->request->data)) {
+            if ($this->Discipline->saveAll($this->request->data)) {
                 $this->Session->setFlash('Disciplina cadastrada com sucesso.', 'flash');
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar esta disciplina.', 'flash', array('alert' => 'danger'));
             }
+        } else {
+            $categories = $this->Discipline->Category->find('list');            
+            $this->set(compact('categories'));
         }
     }
 
@@ -41,8 +44,9 @@ class DisciplinesController extends AppController {
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
+            echo var_dump($this->request->data);
             $this->Discipline->id = $id;
-            if ($this->Discipline->save($this->request->data)) {
+            if ($this->Discipline->saveAll($this->request->data)) {
                 $this->Session->setFlash('Disciplina atualizada com sucesso', 'flash');
                 $message = 'Saved';
                 $this->redirect(array('action' => 'index'));
@@ -59,6 +63,8 @@ class DisciplinesController extends AppController {
         if (!$this->request->data) {
             $this->request->data = $discipline;
         }
+        $categories = $this->Discipline->Category->find('list');            
+        $this->set(compact('categories'));
     }
 
     public function delete($id) {
