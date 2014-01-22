@@ -22,7 +22,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf8" />
+        <meta charset="utf-8" />
         <title>Simulados - Portal do Amador</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -170,6 +170,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
         <footer class="footer">
             Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados
+            <pre><?php echo $this->element('sql_dump'); ?></pre>
         </footer>
     </body>
 </html>

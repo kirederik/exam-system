@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class QuestionsController extends AppController {
 
@@ -73,8 +73,13 @@ class QuestionsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->Question->id = $id;
             //if ($this->Question->save($this->request->data)) {
-            unset($this->Question->Alternative->validate['company_id']);
-            if ($this->Question->saveAssociated($this->request->data)) {
+            foreach ($this->request->data['Alternative'] as $index => $value) {
+                if (!isset($value['is_correct'])) {
+                    $this->request->data['Alternative'][$index]['is_correct'] = 0;
+                }
+            }
+
+            if ($this->Question->saveAll($this->request->data)) {
                 $this->Session->setFlash('Questão atualizada com sucesso', 'flash');
                 $message = 'Saved';
                 $this->redirect(array('action' => 'view', $id));

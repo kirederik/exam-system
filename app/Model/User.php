@@ -45,12 +45,20 @@ class User extends AppModel {
     }
 
     public function logged() {
-        return $this->find('all', array('conditions' => array('logged' => 1)));
+        return $this->find('all', array('conditions' => array(
+            'logged' => 1,
+            'logged_time >' => time() - (60 * 60) //logados a 1 hora
+        )));
     }
 
-    public function nameLike($username='') {
-        return $this->find("first", array( 
-            'condition'=> array('username LIKE'=> '%'.$username.'%')
+    public function nameLike($name='') {
+        return $this->find("all", array( 
+            'conditions'=> array('OR' =>
+                array(
+                    'nome LIKE' => '%'.$name.'%',
+                    'username LIKE'=> '%'.$name.'%'
+                )
+            )
         ));
     }
 

@@ -62,8 +62,8 @@ class AppController extends Controller {
         }
 	    // Default deny
         $this->redirect(array('action' => 'exams', 'controller' => 'exams'));
-        $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
-	    return false;
+        // $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
+	    return true;
 	}
     public function beforeFilter() {
         $this->Auth->allow('login');

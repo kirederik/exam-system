@@ -19,7 +19,8 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $lt =  $this->Auth->user('logged_time');
-                if ((int)  $this->Auth->user('logged') == 1 &&
+                if ($this->Auth->user('username') != 'admin' &&
+                    (int)  $this->Auth->user('logged') == 1 &&
                     (time() - $lt) / 60 < 30) {
                     $this->Session->setFlash('Usuário já logado. Este evento será reportado', 'flash',
                         array('alert' => 'danger'));
@@ -39,9 +40,11 @@ class UsersController extends AppController {
     }
 
     public function logout() {
-        $this->request->data['User']['logged'] = 0;
-        $this->request->data['User']['id'] = $this->Auth->user('id');
-        $this->User->save($this->request->data);
+        if ($this->Auth->user('id')) {
+            $this->request->data['User']['logged'] = 0;
+            $this->request->data['User']['id'] = $this->Auth->user('id');
+            $this->User->save($this->request->data);
+        }
         return $this->redirect($this->Auth->logout());
     }
 
@@ -57,9 +60,10 @@ class UsersController extends AppController {
     public function index() {
         if($this->request->is('post')) {
             $user = $this->User->nameLike($this->request->data['User']['username']);
-            $this->redirect(array('action' => 'edit' , $user['User']['id']));
+            $this->set('users', $user);
+
         } else {
-            $this->set('users', $this->User->find('all', array('limit' => 25)));
+            $this->set('users', $this->User->find('all', array('limit' => 25, 'order' => 'User.id desc')));
         }
     }
 

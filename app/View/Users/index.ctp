@@ -8,7 +8,7 @@
         'role' => 'form',
         'inputDefaults' => array(
             'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
-            'div' => array('class' => 'form-group'),
+            'div' => array('class' => 'form-group col-lg-4'),
             'class' => array('form-control'),
             'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
         )));
@@ -20,7 +20,7 @@
         <?php
             echo $this->Form->input('username',
                 array(
-                    'placeholder' => 'Email',
+                    'placeholder' => 'Nome ou Email',
                     'label' => array('text' => 'Email', 'class' => 'sr-only')
                 )
             );

@@ -8,7 +8,9 @@
         <?php shuffle($questions); ?>
         <?php foreach ($questions as $index => $question) { ?>
             <li class="question" id='<?php echo "mquestion" . $index ?>'>
-                <?php echo $question['Question']['question_text']; ?>
+                <?php
+                    echo $question['Question']['question_text']; 
+                ?>
                 <form>
                     <ol class="alternatives">
                         <?php
@@ -72,7 +74,8 @@
                     <h4 class="modal-title" id="instLabel">Instruções</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Preste atenção ao tempo: você tem 4 horas para realizar o simulado. Há um cronômetro no canto superior direito da prova.</p>
+                    <p>Preste atenção ao tempo: você tem 
+                    <?php echo floor($exam['Exam']['time_minutes'] / 60) . 'h' .str_pad($exam['Exam']['time_minutes'] % 60, 2, '0', STR_PAD_LEFT) . 'm'; ?> para realizar o simulado. Há um cronômetro no canto superior direito da prova.</p>
                     <p>Este simulado é composto por <?php echo count($questions); ?> questões e engloba as disciplinas abordadas no exame de <?php echo $exam['Category']['name']; ?>. </p>
                     <p>Para ser aprovado, você precisa acertar ao menos 50% das questões.</p>
                     <p>Pressione no botão abaixo para iniciar o simulado.</p>
@@ -149,7 +152,10 @@
 
 <script>
     $(document).ready(function() {
-        $("#instructions").modal('show');
+        // if (sessionStorage && !sessionStorage.getItem("instructionsModal")) {
+            $("#instructions").modal('show');
+            // sessionStorage.setItem("instructionsModal", 1);
+        // }
         var start = function() {
             var active = true;
             var showResult = function(title) {

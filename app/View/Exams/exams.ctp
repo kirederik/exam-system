@@ -1,4 +1,4 @@
-<header class="panel-heading">
+﻿<header class="panel-heading fix">
     <h3 class="panel-title">Simulados Online - Arrais-Amador e Motonauta</h3>
 </header>
 <div class="panel-body">
@@ -7,6 +7,7 @@
             <h4 class="panel-title">Sobre os simulados</h4>
         </header>
         <div class="panel-body">
+            <h5 class="highlight">Seja bem-vindo, <?php $name = explode(" ",AuthComponent::user("nome")); echo $name[0]; ?>.</h5>
             <p>O sistema foi criado com o objetivo de ajudar o candidato a se preparar para os exames de habilitação para Arrais-Amador ou Motonauta (ou ambos). O candidato resolve as questões e fica sabendo na hora como foi o seu desempenho. No entanto, antes de prosseguir nos simulados, recomendamos que você pegue a sua <strong>Apostila Preparatória para Motonauta e Arrais-Amador (6ª Edição - julho de 2013)</strong>, que compõe a bibliografia básica, e faça uma leitura atenta de seu importante conteúdo.</p>
             
             <p>Para saber detalhes dos Simulados e dos Exames de habilitação para Arrais-Amador e Motonauta, <span id="details" class="btn-link">clique aqui</span>.
@@ -68,7 +69,7 @@
     </section>
     <section class="panel-info panel">
         <header class="panel-heading">
-            <h4 class="panel-title">Por Categorias</h4>
+            <h4 class="panel-title">Por Grupo de Disciplina para cada Categoria</h4>
         </header>
         <div class="panel-body">
             <table class="table table-striped table-hover ">
@@ -120,17 +121,17 @@
             <div class="modal-body  text-small">
                 <h5 class="highlight">Caracter&iacute;sticas dos Simulados</h5>
                 <p>
-                    <strong>1. Simulados por Disciplina</strong> - O sistema disponibiliza quest&otilde;es objetivas de m&uacute;ltipla escolha com cinco (5) op&ccedil;&otilde;es de resposta, sendo uma correta,   de modo que o desempenho final na disciplina lhe dir&aacute; se &eacute; preciso estudar mais. Cada simulado por disciplina possui 25 quest&otilde;es, em conson&acirc;ncia com os assuntos e/ou conte&uacute;dos que a Marinha costuma cobrar nas provas que aplica.
+                    <strong>1. Por Disciplina</strong> - O sistema disponibiliza quest&otilde;es objetivas de m&uacute;ltipla escolha com cinco (5) op&ccedil;&otilde;es de resposta, sendo uma correta, de modo que o desempenho final na disciplina lhe dir&aacute; se &eacute; preciso estudar mais. Cada simulado por disciplina possui em média 25 quest&otilde;es, em conson&acirc;ncia com os assuntos e/ou conte&uacute;dos que a Marinha costuma cobrar nas provas que aplica.
                 </p>
                 
-                <p><strong>2. Provas Simuladas (Teste Final)</strong></p>
+                <p><strong>2. Por Grupo de Disciplinas (Provas Simuladas)</strong></p>
                 <ul>
                     <li>
-                        <strong><em>Arrais-Amador</em></strong> - Para o candidato a  categoria de Arrais-Amador, disponibilizamos  duas (2) provas objetivas de m&uacute;ltipla escolha com cinco (5) op&ccedil;&otilde;es de resposta, sendo uma correta, com quest&otilde;es selecionadas de todas as disciplinas. Cada prova possui 40  quest&otilde;es, no mesmo molde e semelhan&ccedil;a da prova oficial.
+                        <strong><em>Arrais-Amador</em></strong> - Para o candidato a  categoria de Arrais-Amador, disponibilizamos provas objetivas de múltipla escolha com cinco (5) opções de resposta, sendo uma correta, com questões selecionadas aleatoriamente de todas as disciplinas exigidas para Arrais-Amador. Cada prova possui 40 questões, no mesmo molde e semelhan&ccedil;a da prova oficial.
                     </li>
                     <li>
                         <em><strong> Motonauta</strong></em> - 
-                        Para o candidato a  categoria de Motonauta, disponibilizamos  duas (2) provas objetivas de m&uacute;ltipla escolha com cinco (5)  op&ccedil;&otilde;es de resposta, sendo uma correta, com quest&otilde;es selecionadas de todas as disciplinas exigidas para Motonauta. Cada prova possui 20  quest&otilde;es, no mesmo molde e semelhan&ccedil;a da prova oficial.
+                        Para o candidato a categoria de Motonauta, disponibilizamos provas objetivas de m&uacute;ltipla escolha com cinco (5)  op&ccedil;&otilde;es de resposta, sendo uma correta, com quest&otilde;es selecionadas aleatoriamente de todas as disciplinas exigidas para Motonauta. Cada prova possui 20  quest&otilde;es, no mesmo molde e semelhan&ccedil;a da prova oficial.
                     </li>
                 </ul>
 
@@ -165,7 +166,7 @@
                     </li>
                 </ul>
                 <div id="saiba_mais">
-                    <p align="right"> <span class="highlight">Fonte:  NORMAM-03/DPC - &Uacute;ltima Atualiza&ccedil;&atilde;o: Portaria n&ordm; 29/DPC, de 21/02/2013</span>.</p>
+                    <p class="pull-right"> <span class="highlight">Fonte:  NORMAM-03/DPC - &Uacute;ltima Atualiza&ccedil;&atilde;o: Portaria n&ordm; 29/DPC, de 21/02/2013</span>.</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -175,10 +176,38 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="welcomeLabel">
+                    <?php echo $this->Html->image("timao2.gif", array('alt' => 'Portal do Amador', 'class' => 'botimg')); ?>                
+                    Simulados Online</h4>
+            </div>
+            <div class="modal-body">
+                <p class="highlight"><?php $name = explode(" ",AuthComponent::user("nome")); echo $name[0]; ?>, seja bem-vindo aos simulados da Escola Náutica Portal do Amador</p>
+                <p><i class="glyphicon glyphicon-arrow-right red"></i><strong>  Ao terminar seu estudo, não esqueça de realizar logout do sistema</strong>, utilizando o botão SAIR localizado no canto superior direito.</p>
+                <p>Bom Estudo!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 <script>
     $(document).ready(function() {
         $("#details").click(function() {
             $("#myModal").modal('show');
         });
+        if (!sessionStorage.getItem("showWelcome")) {
+            sessionStorage.setItem("showWelcome", 1);
+            $("#welcomeModal").modal();
+        }
     });
 </script>

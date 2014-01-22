@@ -12,7 +12,13 @@
             <?php foreach ($questions as $index => $question) { ?>
                 <div class="item mainText <?php if ($index == 0) echo "active" ?>">
                     <p><?php echo "Questão ".  ($index + 1) . " de ".$count . ":"; ?></p>
-                    <?php echo $question['Question']['question_text']; ?>
+                    <?php                         
+                    echo $question['Question']['question_text']; 
+                    if ($question['Question']['imagem_location']) {
+                        echo $this->Html->image('questoes/'. $question['Question']['imagem_location'], 
+                                array('alt' => 'Imagem Auxiliar', 'class' => 'img-question')
+                            );
+                    } ?>
                     <form>
                         <ol class="alternatives">
                             <?php

@@ -42,6 +42,9 @@
                 ?>
             </div>
         </div>
+        <p id="favorite">
+            Pressione <span class="highlight">Ctrl+D</span> para adicionar esta página aos favoritos.
+        </p>
     <?php echo $this->Form->end(); ?>
     </div>
 </div>

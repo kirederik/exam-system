@@ -7,7 +7,14 @@
             <h3 class="panel-title">Enunciado</h3>
         </header>
         <p class="panel-body">
-            <?php echo $question['Question']['question_text'] ?>
+            <?php
+                echo $question['Question']['question_text']; 
+                if ($question['Question']['imagem_location']) {
+                    echo $this->Html->image('questoes/'. $question['Question']['imagem_location'], 
+                            array('alt' => 'Imagem Auxiliar', 'class' => 'img-question')
+                        );
+                } 
+            ?>
         </p>
     </section>
 

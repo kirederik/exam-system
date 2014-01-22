@@ -26,9 +26,9 @@
         );
         ?>
         <?php  
-        echo $this->Form->input('image_location', 
+        echo $this->Form->input('imagem_location', 
             array(
-                'label' => array('text' => 'Localização da imagem', 'class' => 'col-lg-2 control-label')
+                'label' => array('text' => 'Nome da imagem', 'class' => 'col-lg-2 control-label')
             )
         );
         ?>
