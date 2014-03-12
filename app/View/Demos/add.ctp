@@ -1,10 +1,10 @@
 <header class="panel-heading">
-    <h3 class="panel-title">Novo Simulado</h3>
+    <h3 class="panel-title">Novo Simulado demo</h3>
 </header>
 <div class="panel-body">
 
 
-<?php echo $this->Form->create('Exam', array(
+<?php echo $this->Form->create('Demo', array(
     'class' => 'form-horizontal', 
     'role' => 'form',
     'inputDefaults' => array(
@@ -23,25 +23,18 @@
                 'label' => array('text' => 'Categoria', 'class' => 'col-lg-2 control-label')
             )
         );
-        echo $this->Form->input('time_minutes', 
-            array(
-                'type' => 'number', 'label' => array('text' => 'Tempo (em minutos)', 'class' => 'col-lg-2 control-label')
-            )
-        );
         ?>
     </fieldset>
     <fieldset>
-        <legend>Disciplinas</legend>
-        <?php foreach ($disciplines as $index => $discipline) {
-            echo $this->Form->input('ExamsDiscipline.' . $index . '.amount', 
+        <legend>Questões</legend>
+        <?php for ($i=0; $i < 10; $i++) { 
+            echo $this->Form->input('DemosQuestion.' . $i . '.question_id',
                 array(
-                    'label' => array('text' => $discipline['disciplines']['name'], 'class' => 'col-lg-2 control-label inline')
+                    'type' => 'number',
+                    'label' => array('text' => "ID da Questão " . ($i+1), 'class' => 'col-lg-2 control-label inline')
                 )
             );
-            echo $this->Form->input('ExamsDiscipline.' . $index . '.discipline_id',
-                array('type' => 'hidden', 'value' => $discipline['disciplines']['id'])
-            );
-        } ?>            
+        } ?>
     </fieldset>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">

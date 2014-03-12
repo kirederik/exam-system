@@ -78,6 +78,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                             array('controller' => 'Exams', 'action' => 'index')
                         ); ?>
                     </li>
+                    <li class="<?php if($this->params['controller'] == 'Demos' && ($this->params['action'] != 'viewDemos' || $this->params['action'] != 'viewDemo')) echo "active" ?>">
+                        <?php echo $this->Html->link('Demos',
+                            array('controller' => 'Demos', 'action' => 'index')
+                        ); ?>
+                    </li>
                     <li class="dropdown <?php if($this->params['controller'] == 'Users') echo "active" ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -109,6 +114,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                             array('controller' => 'Exams', 'action' => 'exams')
                         ); ?>
                     </li>
+                    <li class="<?php if($this->params['controller'] == 'Demos' && ($this->params['action'] == 'viewDemos' || $this->params['action'] == 'viewDemo')) echo "active" ?>">
+                        <?php echo $this->Html->link('Ver Demos',
+                            array('controller' => 'Demos', 'action' => 'viewDemos')
+                        ); ?>
+                    </li>
                     <li>
                         <?php echo $this->Html->link('Logout',
                             array('controller' => 'Users', 'action' => 'logout')
@@ -124,7 +134,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
             </div>
             <header class="page-header">
-                    <?php if (!AuthComponent::user('id')) { ?>
+                    <?php if (!AuthComponent::user('id') && ! ($this->params['controller'] == 'Demos')) { ?>
                     <h1 class="container text-center">
                         <span class="text-center">
                             <?php echo $this->Html->image("timao_small.png", array('alt' => 'Portal do Amador', 'class' => 'logo')); ?>
@@ -155,7 +165,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <div class="container">
                 <?php echo $this->Session->flash(); ?>
                 <?php 
-                    if (!AuthComponent::user('id')) {
+                    if (!AuthComponent::user('id') && !($this->params['controller'] == 'Demos')) {
                         echo '<section class="panel panel-primary login-page">';
                     } else {
                         echo '<section class="panel panel-primary">';
@@ -170,7 +180,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
         <footer class="footer">
             Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados
-            <pre><?php echo $this->element('sql_dump'); ?></pre>
         </footer>
     </body>
 </html>

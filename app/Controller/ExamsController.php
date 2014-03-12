@@ -26,9 +26,8 @@ class ExamsController extends AppController {
     }
 
 	public function isAuthorized($user) {
-	    // All registered users can add posts
 	    if ($this->action === 'exams' || $this->action ==="do_exam" || $this->action ==="do_exercise" ) {
-            if ((int) $user['expiracao'] < time() - (32 * 24 * 60 * 60)) {
+            if ((int) $user['expiracao'] < time()) {
 	            parent::isAuthorized($user);
 	        } else {
 	        	return true;
@@ -154,7 +153,7 @@ class ExamsController extends AppController {
 				$this->Session->setFlash('Simulado adicionado com sucesso.', 'flash');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-                $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar este simulado.', 'flash', array('alert' => 'danger'));
+        $this->Session->setFlash('Ops, ocorreu um erro ao cadastrar este simulado.', 'flash', array('alert' => 'danger'));
 			}
 		}
 		$categories = $this->Exam->Category->find('list');

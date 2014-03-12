@@ -25,8 +25,8 @@ class Question extends AppModel {
             'className' => 'Alternative',
             'foreignKey' => 'question_id',
             'dependent'=> true,
-
-        )
+        ),
+         'DemosQuestion'
     );
 
     public function textLike($text='') {

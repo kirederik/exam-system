@@ -1,4 +1,4 @@
-drop database if exists test_simulados;
+drop database if exists simulados;
 create database test_simulados CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 use test_simulados;
@@ -73,6 +73,21 @@ create table exams(
     id int unsigned not null auto_increment primary key,
     category_id int unsigned not null,
     time_minutes int signed
+);
+
+create table demos(
+    id int unsigned not null auto_increment primary key,
+    category_id int unsigned not null,
+    foreign key(category_id) references categories(id)
+);
+
+create table demos_questions(
+    id int unsigned not null auto_increment primary key,
+    demo_id int unsigned not null,
+    question_id int unsigned not null,
+    foreign key(demo_id) references demos(id),
+    foreign key(question_id) references questions(id)
+
 );
 
 create table exams_disciplines(

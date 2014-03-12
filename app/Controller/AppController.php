@@ -56,7 +56,7 @@ class AppController extends Controller {
 	        return true;
 	    }
 
-        if ((int) $user['expiracao'] < (time() - (32 * 24 * 60 * 60))) {
+        if ((int) $user['expiracao'] < time()) {
             $this->Session->setFlash('Sua conta expirou.', 'flash', array('alert' => 'danger'));    
             return false;
         }

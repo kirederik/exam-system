@@ -1,7 +1,12 @@
 @charset "UTF-8";
+.pad-left {
+  padding-left: 40px; }
+  .pad-left h3 {
+    font-size: 100%; }
+
 html {
   position: relative;
-  min-height: 100%; }
+  min-height: 75%; }
 
 h1, h2, h3, h4, h5 {
   font-family: "Trebuchet MS"; }
@@ -168,7 +173,7 @@ body {
     .mainText ol.alternatives li {
       display: inline; }
     .mainText ol.alternatives > li:before {
-      content: counter(list, lower-alpha) ") ";
+      content: counter(list,lower-alpha) ") ";
       counter-increment: list;
       font-weight: bold; }
     .mainText ol.alternatives > li::after {
@@ -180,12 +185,12 @@ body {
   font-weight: bold; }
 
 textarea {
-  width: 600px!important;
-  height: 150px!important; }
+  width: 600px !important;
+  height: 150px !important; }
 
 fieldset.alternatives textarea {
-  width: 600px!important;
-  height: 60px!important; }
+  width: 600px !important;
+  height: 60px !important; }
 
 table td.not_that_big {
   max-width: 300px; }
@@ -208,7 +213,7 @@ table td.not_that_big {
     width: 100%; }
   .cake-sql-log th {
     border: 0;
-    border-bottom: 2px solid #555555;
+    border-bottom: 2px solid #555;
     text-align: left;
     padding: 4px; }
   .cake-sql-log th a {
@@ -223,7 +228,7 @@ table td.not_that_big {
     padding: 6px;
     text-align: left;
     vertical-align: top;
-    border-bottom: 1px solid #dddddd; }
+    border-bottom: 1px solid #ddd; }
   .cake-sql-log table tr:nth-child(even) {
     background: #f9f9f9; }
   .cake-sql-log td.actions {

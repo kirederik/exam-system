@@ -16,6 +16,9 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        if ($this->Auth->user("id")) {
+            $this->redirect(array("controller" => "exams", "action" => "exams"));
+        }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $lt =  $this->Auth->user('logged_time');

@@ -39,7 +39,7 @@ class User extends AppModel {
     public function expired() {
         return $this->find('all', 
             array('limit' => 30, 'conditions' => array(
-                'expiracao <' => time() - (32 * 24 * 60 * 60)
+                'expiracao <' => time()
             )
         ));
     }
@@ -68,7 +68,7 @@ class User extends AppModel {
                 'AND' => 
                     array(
                         'username LIKE'=> '%'.$username.'%', 
-                        'expiracao <' => time() - (32 * 24 * 60 * 60)
+                        'expiracao <' => time()
                     )
                 )
             )

@@ -16,6 +16,10 @@ class Category extends AppModel {
             'className' => 'Exam',
             'dependent' => true
         ),
+        'Demo' => array(
+            'className' => 'Demo',
+            'dependent' => true
+        ),
         'User'
     );
 
