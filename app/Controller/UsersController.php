@@ -29,9 +29,18 @@ class UsersController extends AppController {
                         array('alert' => 'danger'));
                     $this->redirect($this->Auth->logout());
                 }
+
+                if ((int) $this->Auth->user('expiracao') < time() && $this->Auth->user('username') != 'admin') {
+                    $this->Session->setFlash('Sua conta expirou.', 'flash', array('alert' => 'danger'));
+                    $this->redirect($this->Auth->logout());
+                }
+                
+
                 $this->request->data['User']['logged'] = 1;
                 $this->request->data['User']['logged_time'] = time();
                 $this->request->data['User']['id'] = $this->Auth->user('id');
+                $this->request->data['User']['expiracao'] = $this->Auth->user('expiracao');
+                $this->request->data['User']['not'] = true;
                 $this->User->save($this->request->data);
                 return $this->redirect($this->Auth->redirect());
             }

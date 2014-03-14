@@ -25,16 +25,16 @@ class ExamsController extends AppController {
         // check and update login time
     }
 
-	public function isAuthorized($user) {
+		public function isAuthorized($user) {
 	    if ($this->action === 'exams' || $this->action ==="do_exam" || $this->action ==="do_exercise" ) {
-            if ((int) $user['expiracao'] < time()) {
-	            parent::isAuthorized($user);
-	        } else {
-	        	return true;
-	        }
+	      if ((int) $user['expiracao'] < time()) {
+	        parent::isAuthorized($user);
+	      } else {
+	      	return true;
+	      }
 	    }
 	    return parent::isAuthorized($user);
-	}
+		}
 
 	public function index() {
 		$this->Exam->recursive = 0;

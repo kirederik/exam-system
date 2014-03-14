@@ -58,12 +58,15 @@ class AppController extends Controller {
 
         if ((int) $user['expiracao'] < time()) {
             $this->Session->setFlash('Sua conta expirou.', 'flash', array('alert' => 'danger'));    
+            $this->redirect(array("controller" => "users", "action" => "login"));
             return false;
         }
-	    // Default deny
-        $this->redirect(array('action' => 'exams', 'controller' => 'exams'));
-        // $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
-	    return true;
+	    else {
+            // Default deny
+            $this->redirect(array('action' => 'exams', 'controller' => 'exams'));
+            // $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
+	       return true;
+       }
 	}
     public function beforeFilter() {
         $this->Auth->allow('login');

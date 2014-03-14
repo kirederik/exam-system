@@ -26,12 +26,13 @@ class User extends AppModel {
                 $this->data[$this->alias]['password']
             );
         }
-        if(isset($this->data[$this->alias]['extend'])) {
-            echo $this->data[$this->alias]['extend'];
-            $t = $this->data[$this->alias]['extend'];
-            $this->data[$this->alias]['expiracao'] = (int) time() + ( ((int)$t) * 24 * 60 * 60);
-        } else if(!isset($this->data[$this->alias]['expiracao'])) {
-            $this->data[$this->alias]['expiracao'] = time() + (32 * 24 * 60 * 60);
+        if (!isset($this->data[$this->alias]['not'])) {
+            if(isset($this->data[$this->alias]['extend'])) {
+                $t = $this->data[$this->alias]['extend'];
+                $this->data[$this->alias]['expiracao'] = (int) time() + ( ((int)$t) * 24 * 60 * 60);
+            } else if(!isset($this->data[$this->alias]['expiracao'])) {
+                $this->data[$this->alias]['expiracao'] = time() + (32 * 24 * 60 * 60);
+            }
         }
         return true;    
     }
