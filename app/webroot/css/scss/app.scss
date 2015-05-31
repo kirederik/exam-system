@@ -12,16 +12,9 @@ $footerHeight: 100px;
   background-image: -o-linear-gradient($from, $to);
 }
 
-.pad-left {
-    padding-left: 40px;
-    h3 {
-        font-size: 100%;
-    }
-}
-
 html {
     position: relative;
-    min-height: 75%;
+    min-height: 100%;
 }
 
 h1, h2, h3, h4, h5 {

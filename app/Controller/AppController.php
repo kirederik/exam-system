@@ -50,23 +50,29 @@ class AppController extends Controller {
       		, 'authorize' => array('Controller') 
         )
     );
+
+    public function isExpired($user) {
+        return (int) $user['expiracao'] < time();
+    }
+    
 	public function isAuthorized($user) {
 	    // Admin can access every action
 	    if (isset($user['role']) && $user['role'] === 'admin') {
 	        return true;
 	    }
 
-        if ((int) $user['expiracao'] < time()) {
+        if ($this->isExpired($user)) {
             $this->Session->setFlash('Sua conta expirou.', 'flash', array('alert' => 'danger'));    
             return false;
         }
 	    // Default deny
-        $this->redirect(array('action' => 'exams', 'controller' => 'exams'));
+        //$this->redirect(array('action' => 'exams', 'controller' => 'exams'));
         // $this->Session->setFlash('Você não tem autorização para acessar este recurso.', 'flash', array('alert' => 'danger'));        
-	    return true;
+	    return false;
 	}
     public function beforeFilter() {
         $this->Auth->allow('login');
     }
+
 
 }

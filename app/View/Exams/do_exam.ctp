@@ -149,7 +149,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
+</div>
 <script>
     $(document).ready(function() {
         // if (sessionStorage && !sessionStorage.getItem("instructionsModal")) {

@@ -144,7 +144,7 @@
             </div>
         </div>
     </div>
-
+</div>
 <script>
     $(document).ready(function() {
         $("#instructions").modal('show');

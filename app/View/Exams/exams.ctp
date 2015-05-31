@@ -10,7 +10,7 @@
             <h5 class="highlight">Seja bem-vindo, <?php $name = explode(" ",AuthComponent::user("nome")); echo $name[0]; ?>.</h5>
             <p>O sistema foi criado com o objetivo de ajudar o candidato a se preparar para os exames de habilitação para Arrais-Amador ou Motonauta (ou ambos). O candidato resolve as questões e fica sabendo na hora como foi o seu desempenho. No entanto, antes de prosseguir nos simulados, recomendamos que você pegue a sua <strong>Apostila Preparatória para Motonauta e Arrais-Amador (6ª Edição - julho de 2013)</strong>, que compõe a bibliografia básica, e faça uma leitura atenta de seu importante conteúdo.</p>
             
-            <p>Para saber detalhes dos Simulados e dos Exames de habilitação para Arrais-Amador e Motonauta, <span id="details" class="btn-link">clique aqui</span>.
+            <p>Para saber detalhes dos Simulados e dos Exames de habilitação para Arrais-Amador e Motonauta, <span id="details" class="btn-link">clique aqui</span>.</p>
             
             <p>Caso encontre algum erro nas questões ou no texto dos simulados, por favor, escreva para nós. <a href="http://www.portaldoamador.com.br/paginas/contato.html">Clique aqui</a> para preencher o formulário e enviar.</p>
             <p><i class="glyphicon glyphicon-arrow-right red"></i><strong>  Ao terminar seu estudo, não esqueça de sair do sistema.</strong> O botão para sair está no canto superior direito.</p>

@@ -115,6 +115,25 @@ CREATE TABLE users (
 );                 
 
 
+create table filetypes (
+    id int unsigned auto_increment primary key,
+    name varchar(30) not null
+);
+
+create table materials (
+    id int unsigned auto_increment primary key,
+    category_id int unsigned not null,
+    filetype_id int unsigned not null,
+    name varchar(250) not null,
+    filename varchar(100) not null,
+    description text,
+    foreign key(category_id) references categories(id),
+    foreign key(filetype_id) references filetypes(id)
+);
+
+-- create table modules (
+--     id int unsigned not null auto_increment primary key
+-- );
 
 insert into disciplines (name, created, ordem) values ('Combate a Incêndio', NOW(), 5);
 insert into disciplines (name, created, ordem) values ('Sobrevivência ao mar', NOW(), 6);

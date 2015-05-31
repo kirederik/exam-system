@@ -92,7 +92,7 @@
         </div>
     </div>
     <!-- Button trigger modal -->
-
+</div>
 
 <script>
     $(document).ready(function() {

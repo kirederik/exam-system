@@ -84,6 +84,21 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                         ); ?>
                     </li>
                     <li class="dropdown <?php if($this->params['controller'] == 'Users') echo "active" ?>">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materiais <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <?php echo $this->Html->link('Lista',
+                                    array('controller' => 'Materials', 'action' => 'lista')
+                                ); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Html->link('Tipos',
+                                    array('controller' => 'Filetypes', 'action' => 'index')
+                                ); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown <?php if($this->params['controller'] == 'Users') echo "active" ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -134,12 +149,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
             </div>
             <header class="page-header">
-                    <?php if (!AuthComponent::user('id') && ! ($this->params['controller'] == 'Demos')) { ?>
+                <?php if (!AuthComponent::user('id') && ! ($this->params['controller'] == 'Demos')) { ?>
                     <h1 class="container text-center">
                         <span class="text-center">
                             <?php echo $this->Html->image("timao_small.png", array('alt' => 'Portal do Amador', 'class' => 'logo')); ?>
                         </span>
-                    <?php } else { ?>
+                <?php } else { ?>
                     <h1 class="container center-on-small">
                         <span class="hide-on-large text-center">
                             <?php echo $this->Html->image("timao_small.png", array('alt' => 'Portal do Amador', 'class' => 'logo')); ?>
@@ -160,26 +175,56 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             </header>
         </div>
 
-        <article class="main">
-
+        <article class="main">    
             <div class="container">
-                <?php echo $this->Session->flash(); ?>
-                <?php 
-                    if (!AuthComponent::user('id') && !($this->params['controller'] == 'Demos')) {
-                        echo '<section class="panel panel-primary login-page">';
-                    } else {
-                        echo '<section class="panel panel-primary">';
-                    }
-                ?>
-                <?php echo $this->fetch('content'); ?>
-
-
-                </section>
+                <div class="row">
+                    <?php if (strtolower($this->params['controller']) == 'exams' && 
+                              $this->params['action'] == 'exams'): ?>
+                        <div class="col-md-2">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Navegação</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li role="presentation" class="<?php if($this->params['controller'] == 'Exams' && $this->params['action'] == 'exams') echo "active" ?>">
+                                            <?php echo $this->Html->link('Ver Simulados',
+                                                array('controller' => 'Exams', 'action' => 'exams')
+                                            ); ?>
+                                        </li>
+                                        <li role="presentation" class="<?php if($this->params['controller'] == 'Materials' && $this->params['action'] == 'index') echo "active" ?>">
+                                            <?php echo $this->Html->link('Material Complementar',
+                                                array('controller' => 'materials', 'action' => 'index')
+                                            ); ?>
+                                        </li>
+                                        <li role="presentation" class="<?php if($this->params['controller'] == 'Users' && $this->params['action'] == 'profile') echo "active" ?>">
+                                            <?php echo $this->Html->link('Perfil',
+                                                array('controller' => 'Users', 'action' => 'profile')
+                                            ); ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-10"> <?php else: ?> <div class="col-md-12">
+                    <?php 
+                        endif; 
+                        echo $this->Session->flash();
+                        if (!AuthComponent::user('id') && !($this->params['controller'] == 'Demos')) {
+                            echo '<section class="panel panel-primary login-page">';
+                        } else {
+                            echo '<section class="panel panel-primary">';
+                        }
+                        echo $this->fetch('content'); 
+                    ?>
+                        </section>
+                    </div>
+                </div>
             </div>
         </article>
 
         <footer class="footer">
-            Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados
+            Copyright &copy; 2012-<?php echo date("Y"); ?> - <a href="http://www.portaldoamador.com.br">Portal do Amador</a>. Todos os direitos reservados
         </footer>
     </body>
 </html>

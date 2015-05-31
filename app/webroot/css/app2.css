@@ -83,11 +83,11 @@ h1, h2, h3, h4, h5 {
 
 body {
   font-family: "Trebuchet MS";
-  background-color: #fff;
-  background-image: -moz-linear-gradient(#fff, #003d4a);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#003d4a));
-  background-image: -webkit-linear-gradient(#fff, #003d4a);
-  background-image: -o-linear-gradient(#fff, #003d4a);
+  background-color: white;
+  background-image: -moz-linear-gradient(white, #003d4a);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#003d4a));
+  background-image: -webkit-linear-gradient(white, #003d4a);
+  background-image: -o-linear-gradient(white, #003d4a);
   margin: 0 0 100px;
   /* bottom = footer height */ }
   @media print {
@@ -99,7 +99,7 @@ body {
   body > header.page-header {
     border-bottom: 1px solid #003d4a; }
   body article.main {
-    color: #000;
+    color: black;
     height: 100%; }
     body article.main .container {
       height: 100%; }
@@ -168,7 +168,7 @@ body {
     .mainText ol.alternatives li {
       display: inline; }
     .mainText ol.alternatives > li:before {
-      content: counter(list,lower-alpha) ") ";
+      content: counter(list, lower-alpha) ") ";
       counter-increment: list;
       font-weight: bold; }
     .mainText ol.alternatives > li::after {
@@ -180,12 +180,12 @@ body {
   font-weight: bold; }
 
 textarea {
-  width: 600px !important;
-  height: 150px !important; }
+  width: 600px!important;
+  height: 150px!important; }
 
 fieldset.alternatives textarea {
-  width: 600px !important;
-  height: 60px !important; }
+  width: 600px!important;
+  height: 60px!important; }
 
 table td.not_that_big {
   max-width: 300px; }
@@ -208,7 +208,7 @@ table td.not_that_big {
     width: 100%; }
   .cake-sql-log th {
     border: 0;
-    border-bottom: 2px solid #555;
+    border-bottom: 2px solid #555555;
     text-align: left;
     padding: 4px; }
   .cake-sql-log th a {
@@ -223,7 +223,7 @@ table td.not_that_big {
     padding: 6px;
     text-align: left;
     vertical-align: top;
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #dddddd; }
   .cake-sql-log table tr:nth-child(even) {
     background: #f9f9f9; }
   .cake-sql-log td.actions {
@@ -239,5 +239,3 @@ table td.not_that_big {
   /** Tables **/ }
   .login-page .col-lg-3 {
     width: 100%; }
-
-/*# sourceMappingURL=app.css.map */
