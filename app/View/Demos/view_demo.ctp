@@ -46,7 +46,7 @@
     </button> -->
     <!-- Button trigger modal -->
     <div class="action-buttons">
-        <button class="btn btn-primary" id="end" data-toggle="modal" data-target="#confirm">
+        <button class="btn btn-info" id="end" data-toggle="modal" data-target="#confirm">
             Terminar
         </button>
         <button class="btn btn-danger" id="clean" data-toggle="modal" data-target="#confirmClean">
@@ -60,6 +60,8 @@
                 'id' => 'back'
             )
         ); ?>
+        <a class="btn btn-primary" href="http://www.portaldoamador.com.br/paginas/apostila_ara.html">Comprar</a>
+        
     </div>
 
     <!-- Modal -->
@@ -70,10 +72,11 @@
                     <h4 class="modal-title" id="instLabel">Instruções</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Esta é uma demonstração do Sistema de Simulados do Portal do Amador.</p>
-                    <p>Esta demonstração é composto por <?php echo count($questions); ?> questões reais e engloba algumas das disciplinas abordadas no exame de <?php echo $demo['Category']['name']; ?>. </p>
-                    <p>Para ter acesso ao sistema completo, acesse <a href="http://www.portaldoamador.com.br/paginas/apostila_ara.html"> este link.</a></p>
-                    <p>Pressione no botão abaixo para iniciar o simulado.</p>
+                    <p>Esta é uma demonstração do sistema de Simulados do Portal do Amador.</p>
+
+                    <p>Das mais de 500 questões atuais cadastradas em nosso banco de dados, este Simulado Demo lhe ofertará somente 10 questões atualizadas abordadas nos Exames para Arrais-Amador e Motonauta.</p>
+
+                    <p>Pressione o botão abaixo para iniciar o simulado.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" id="start">Iniciar</button>
@@ -128,6 +131,7 @@
                 </div>
                 <div class="modal-body" id="resultBody">
                     <h4 id="resultTitle" class="alert"></h4>
+                    <p>Chegamos ao final deste Simulado de Demonstração.</p>
                     <div id="resultDetails">
                         <p>De um total de <span id="numberOfQuestions"></span> questões, você:</p>
                         <ul>
@@ -135,11 +139,17 @@
                             <li>Errou <span id="misses"></span> questões.</li>
                         </ul>
                         <p>Seu aproveitamento foi de <span id="efficiency"></span>%.</p>
-                        <p id="whatIneed"></p>
+                        
+                        <p>Aqui você encontrou uma micro amostra das questões cadastradas em nossos simulados online. São perguntas simulares às questões oficiais recentemente aplicadas pela Marinha para Arrais-Amador e Motonauta, com o diferencial de serem comentadas.</p>
+
+                        <p>Não perca mais tempo procurando. Acelere seus estudos resolvendo questões que realmente avaliam seu conhecimento antes da prova.</p>
+
+                        <p>Clique no botão "Comprar" para adquirir sua Apostila e ter acesso integral aos Simulados online.</p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ver correção</button>
+                    <a class="btn btn-primary" href="http://www.portaldoamador.com.br/paginas/apostila_ara.html">Comprar</a>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Ver correção</button>
                 </div>
             </div>
         </div>
@@ -176,7 +186,7 @@
                     $("#resultTitle").addClass("alert-success").html("Bom trabalho");
                 } else {
                     $("#resultTitle").addClass("alert-danger").html("Reprovado");
-                    $("#whatIneed").html("Você precisa de um aproveitamento <strong>superior a 50%</strong> para passar no exame.");
+                    // $("#whatIneed").html("Você precisa de um aproveitamento <strong>superior a 50%</strong> para passar no exame.");
                 }
                 active = false;
                 $("#end").hide();
