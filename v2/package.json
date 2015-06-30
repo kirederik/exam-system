@@ -1,0 +1,33 @@
+{
+  "name": "Exam-system",
+  "version": "2.0.0",
+  "description": "Exam system rebuilt with AngularJS",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kirederik/exam-system.git"
+  },
+  "keywords": [
+    "exam-system"
+  ],
+  "author": "Derik Evangelista <kirederik@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirederik/exam-system/issues"
+  },
+  "homepage": "https://github.com/kirederik/exam-system",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-bower": "0.0.10",
+    "gulp-connect": "^2.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-obfuscator": "0.0.0",
+    "gulp-sass": "^2.0.3",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4"
+  }
+}

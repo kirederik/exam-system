@@ -1,1 +1,6 @@
-v2
+#Exam System - v2
+
+Running
+------
+
+```gulp server```

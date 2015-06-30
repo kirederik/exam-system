@@ -1,0 +1,27 @@
+{
+  "name": "exam-system",
+  "version": "2.0",
+  "authors": [
+    "Derik Evangelista <kirederik@gmail.com>"
+  ],
+  "description": "Exam system rebuilt with AngularJS",
+  "license": "MIT",
+  "homepage": "https://github.com/kirederik/exam-system",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte": "~2.1.2",
+    "angular": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "angular-i18n": "~1.4.1",
+    "angular-sanitize": "~1.4.1",
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "jquery": "~2.1.4"
+  }
+}
