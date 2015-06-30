@@ -42,7 +42,7 @@ gulp.task('css', function() {
     .on("error", notify.onError(function (error) {
       return "Error: " + error.message;
     })))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./app/dist/css'))
     .pipe(connect.reload());
 });
 
